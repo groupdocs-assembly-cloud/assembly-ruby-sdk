@@ -59,13 +59,10 @@ module GroupDocsAssemblyCloud
       @api_client.config.logger.debug 'Calling API: AssemblyApi.post_assemble_document ...' if @api_client.config.debugging
       # verify the required parameter 'name' is set
       raise ArgumentError, 'Missing the required parameter name when calling AssemblyApi.post_assemble_document' if @api_client.config.client_side_validation && request.name.nil?
-      
       # verify the required parameter 'data' is set
       raise ArgumentError, 'Missing the required parameter data when calling AssemblyApi.post_assemble_document' if @api_client.config.client_side_validation && request.data.nil?
-      
       # verify the required parameter 'save_options' is set
       raise ArgumentError, 'Missing the required parameter save_options when calling AssemblyApi.post_assemble_document' if @api_client.config.client_side_validation && request.save_options.nil?
-      
       # resource path
       local_var_path = '/assembly/{name}/build'
       local_var_path = local_var_path.sub('{' + downcase_first_letter('Name') + '}', request.name.to_s)
@@ -92,12 +89,11 @@ module GroupDocsAssemblyCloud
 
       # form parameters
       form_params = {}
-      form_params['saveOptions'] = JSON.generate(request.save_options) unless request.save_options.nil?
       form_params[downcase_first_letter('Data')] = request.data
 
       # http body (model)
       post_body = @api_client.object_to_http_body(request.save_options)
-      auth_names = ['oauth']
+      auth_names = ['JWT']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -125,14 +121,10 @@ module GroupDocsAssemblyCloud
      #
     private def request_token
       config = @api_client.config
-      api_version = config.api_version
-      config.api_version = ''
-      request_url = "/oauth2/token"
+      request_url = "/connect/token"
       post_data = "grant_type=client_credentials" + "&client_id=" + config.api_key['app_sid'] + "&client_secret=" + config.api_key['api_key']
-      data, status_code, header = @api_client.call_api(:POST, request_url, :body => post_data, :return_type => 'Object')
+      data, status_code, header = @api_client.call_api(:POST, request_url, :body => post_data, :return_type => 'Object',  :header_params => {'Content-Type': 'application/x-www-form-urlencoded'})
       @api_client.config.access_token = data[:access_token]
-      @api_client.config.api_version = api_version
-      @api_client.config.refresh_token = data[:refresh_token]
     end
     
     # requires all files inside a directory from current dir
@@ -144,4 +136,3 @@ module GroupDocsAssemblyCloud
     end
   end
 end
- 
