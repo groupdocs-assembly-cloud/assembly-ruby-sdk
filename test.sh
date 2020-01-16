@@ -1,2 +1,2 @@
 #!/bin/bash
-mkdir testReports; gem install bundler; bundle install; rake test
+gem install bundler -v 2.0.2 && bundle install && rake test

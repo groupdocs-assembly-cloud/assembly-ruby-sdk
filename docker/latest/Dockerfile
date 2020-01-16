@@ -1,3 +1,5 @@
 FROM ruby:latest
-RUN apt-get update
-RUN apt install zip unzip 
+RUN export DEBIAN_FRONTEND=noninteractive
+RUN apt-get -yq update
+RUN apt -yq install zip unzip 
+RUN mkdir testReports
