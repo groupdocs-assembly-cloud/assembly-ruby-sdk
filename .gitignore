@@ -114,3 +114,4 @@ hs_err_pid*
 vendor/*
 testReports/*
 servercreds.json
+/Settings
