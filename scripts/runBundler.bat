@@ -1,1 +1,2 @@
-docker run --rm -v "%cd%/:/opt/project" -w="/opt/project" ruby:2.4 /bin/bash test.sh
+docker build -f docker\latest\Dockerfile -t groupdocsassemblycloudruby:latest .
+docker run --rm -it -v %cd%:/opt/project -w="/opt/project" groupdocsassemblycloudruby:latest /bin/bash test.sh

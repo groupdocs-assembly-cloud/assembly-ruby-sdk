@@ -71,7 +71,6 @@ module GroupDocsAssemblyCloud
     # @param [Object] Object to be compared
     def ==(other)
       return true if self.equal?(other)
-      
       self.class == other.class
     end
 
@@ -92,7 +91,6 @@ module GroupDocsAssemblyCloud
     # @return [Object] Returns the model itself
     def build_from_hash(attributes)
       return nil unless attributes.is_a?(Hash)
-      
       self.class.swagger_types.each_pair do |key, type|
         if type =~ /\AArray<(.*)>/i
           # check to ensure the input is an array given that the the attribute
@@ -171,7 +169,6 @@ module GroupDocsAssemblyCloud
       self.class.attribute_map.each_pair do |attr, param|
         value = self.send(attr)
         next if value.nil?
-
         hash[param] = _to_hash(value)
       end
       hash
