@@ -41,7 +41,7 @@ module GroupDocsAssemblyCloud
         st_request = PutCreateRequest.new remote_test_folder + test_folder + '/' + remote_name, File.open(local_test_folder + '/' + filename, "rb").read       
         @storage_api.put_create st_request
   
-        request = PostAssembleDocumentRequest.new remote_name ,File.new(local_test_folder + '/Teams.json'),{:SaveFormat => "docx"}, remote_test_folder + test_folder, nil
+        request = PostAssembleDocumentRequest.new remote_name ,File.open(local_test_folder + '/Teams.json', 'r').read,{:SaveFormat => "docx"}, remote_test_folder + test_folder, nil
         result = @assembly_api.post_assemble_document request
         assert result.length > 0, 'Error occurred while getting image data'
       end

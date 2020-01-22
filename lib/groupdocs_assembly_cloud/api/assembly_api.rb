@@ -89,16 +89,16 @@ module GroupDocsAssemblyCloud
 
       # form parameters
       form_params = {}
+      form_params[downcase_first_letter('SaveOptions')] = JSON.generate(request.save_options) unless request.save_options.nil?
       form_params[downcase_first_letter('Data')] = request.data
 
       # http body (model)
-      post_body = @api_client.object_to_http_body(request.save_options)
-      auth_names = ['JWT']
+      auth_names = ['oauth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
                                                         form_params: form_params,
-                                                        body: post_body,
+                                                        body: nil,
                                                         auth_names: auth_names,
                                                         return_type: 'File')
       if @api_client.config.debugging
