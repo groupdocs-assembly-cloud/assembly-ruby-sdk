@@ -38,8 +38,9 @@ module GroupDocsAssemblyCloud
         filename = 'TestAllChartTypes.docx'
         remote_name = filename
   
-        st_request = PutCreateRequest.new remote_test_folder + test_folder + '/' + remote_name, File.open(local_test_folder + '/' + filename, "rb").read       
-        @storage_api.put_create st_request
+        st_request = FileUploadFileRequest.new File.open(local_test_folder + '/' + filename, "rb").read, remote_test_folder + test_folder + '/' + remote_name       
+        st_result = @assembly_api.file_upload_file st_request
+        assert st_result.errors.length == 0, 'Error occurred while uploading data'
   
         request = PostAssembleDocumentRequest.new remote_name ,File.open(local_test_folder + '/Teams.json', 'r').read,{:SaveFormat => "docx"}, remote_test_folder + test_folder, nil
         result = @assembly_api.post_assemble_document request

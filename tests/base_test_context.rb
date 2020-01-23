@@ -28,9 +28,7 @@ module GroupDocsAssemblyCloud
   require "minitest/autorun"
   require "minitest/unit"
   require_relative '../lib/groupdocs_assembly_cloud'
-  require 'aspose_storage_cloud'
   class BaseTestContext < Minitest::Test
-    include AsposeStorageCloud
     include MiniTest::Assertions
     def setup
       file = File.read('Settings/servercreds.json')
@@ -42,15 +40,8 @@ module GroupDocsAssemblyCloud
         config.api_key['api_key'] = creds['AppKey']
         config.api_key['app_sid'] = creds['AppSid']
         config.host = creds['BaseUrl']
-        AsposeStorageCloud.configure do |st_conf|
-          st_conf.api_key['api_key'] = config.api_key['api_key']
-          st_conf.api_key['app_sid'] = config.api_key['app_sid']
-          st_conf.host = creds['BaseUrl']
-          st_conf.scheme = config.scheme
-        end
       end
       @assembly_api = AssemblyApi.new
-      @storage_api = StorageApi.new
     end
 
     def local_test_folder
