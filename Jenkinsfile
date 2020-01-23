@@ -17,8 +17,11 @@ def runtests(dockerImageVersion)
             
             docker.image('ruby:' + dockerImageVersion).inside('-u root'){
                 stage('build'){
-						sh "mkdir testReports"
-						sh "gem install bundler && bundle install"
+                    sh "export DEBIAN_FRONTEND=noninteractive"
+                    sh "apt-get -yq update"
+                    sh "apt -yq install zip unzip"
+                    sh "mkdir testReports"
+                    sh "gem install bundler && bundle install"
                 }
             
                 stage('tests'){   
