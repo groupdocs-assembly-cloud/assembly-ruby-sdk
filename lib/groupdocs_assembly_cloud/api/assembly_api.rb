@@ -791,7 +791,11 @@ module GroupDocsAssemblyCloud
       form_params[downcase_first_letter('Data')] = request.data
 
       # http body (model)
+<<<<<<< lib/groupdocs_assembly_cloud/api/assembly_api.rb
       auth_names = ['JWT']
+=======
+      auth_names = ['oauth']
+>>>>>>> lib/groupdocs_assembly_cloud/api/assembly_api.rb
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
