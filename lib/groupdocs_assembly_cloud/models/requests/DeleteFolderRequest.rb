@@ -1,6 +1,6 @@
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="GroupDocs" file="PostAssembleDocumentRequest.rb">
+ # <copyright company="GroupDocs" file="DeleteFolderRequest.rb">
  #   Copyright (c) 2019 GroupDocs.Assembly for Cloud
  # </copyright>
  # <summary>
@@ -28,30 +28,26 @@
 module GroupDocsAssemblyCloud
 
   #
-  # Request model for post_assemble_document operation.
+  # Request model for delete_folder operation.
   #
-  class PostAssembleDocumentRequest
+  class DeleteFolderRequest
 
-        # File name of template, which is located on a storage
-        attr_accessor :name
-        # Report Data Options. It should be JSON with SaveFormat and ReportData
-        attr_accessor :report_data
-        # Folder path where template file is located(on a storage)
-        attr_accessor :folder
-        # Result name of built document
-        attr_accessor :dest_file_name
+        # Folder path e.g. /Folder1s
+        attr_accessor :path
+        # Storage name
+        attr_accessor :storage_name
+        # Enable to delete folders, subfolders and files
+        attr_accessor :recursive
 	
         #
         # Initializes a new instance.
-        # @param name File name of template, which is located on a storage
-        # @param report_data Report Data Options. It should be JSON with SaveFormat and ReportData
-        # @param folder Folder path where template file is located(on a storage)
-        # @param dest_file_name Result name of built document
-        def initialize(name, report_data, folder = nil, dest_file_name = nil)
-           self.name = name
-           self.report_data = report_data
-           self.folder = folder
-           self.dest_file_name = dest_file_name
+        # @param path Folder path e.g. /Folder1s
+        # @param storage_name Storage name
+        # @param recursive Enable to delete folders, subfolders and files
+        def initialize(path, storage_name = nil, recursive = nil)
+           self.path = path
+           self.storage_name = storage_name
+           self.recursive = recursive
         end
   end
 end

@@ -38,6 +38,652 @@ module GroupDocsAssemblyCloud
       request_token
     end
 
+    # Copy file
+    # 
+    # @param request CopyFileRequest
+    # @return [nil]
+    def copy_file(request)
+      data, _status_code, _headers = copy_file_with_http_info(request)
+      request_token if _status_code == 401
+      nil
+    end
+
+    # Copy file
+    # 
+    # @param request CopyFileRequest
+    # @return [Array<(nil, Fixnum, Hash)>]
+    # nil, response status code and response headers
+    private def copy_file_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? CopyFileRequest
+
+      @api_client.config.logger.debug 'Calling API: AssemblyApi.copy_file ...' if @api_client.config.debugging
+      # verify the required parameter 'dest_path' is set
+      raise ArgumentError, 'Missing the required parameter dest_path when calling AssemblyApi.copy_file' if @api_client.config.client_side_validation && request.dest_path.nil?
+      # verify the required parameter 'src_path' is set
+      raise ArgumentError, 'Missing the required parameter src_path when calling AssemblyApi.copy_file' if @api_client.config.client_side_validation && request.src_path.nil?
+      # resource path
+      local_var_path = '/assembly/storage/file/copy/{srcPath}'
+      local_var_path = local_var_path.sub('{' + downcase_first_letter('SrcPath') + '}', request.src_path.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[downcase_first_letter('DestPath')] = request.dest_path
+
+      if local_var_path.include? downcase_first_letter('SrcStorageName')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('SrcStorageName') + '}', request.src_storage_name.to_s)
+      else
+        query_params[downcase_first_letter('SrcStorageName')] = request.src_storage_name unless request.src_storage_name.nil?
+      end
+      if local_var_path.include? downcase_first_letter('DestStorageName')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('DestStorageName') + '}', request.dest_storage_name.to_s)
+      else
+        query_params[downcase_first_letter('DestStorageName')] = request.dest_storage_name unless request.dest_storage_name.nil?
+      end
+      if local_var_path.include? downcase_first_letter('VersionId')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('VersionId') + '}', request.version_id.to_s)
+      else
+        query_params[downcase_first_letter('VersionId')] = request.version_id unless request.version_id.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'application/xml'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json', 'application/xml'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        AssemblyApi#copy_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Copy folder
+    # 
+    # @param request CopyFolderRequest
+    # @return [nil]
+    def copy_folder(request)
+      data, _status_code, _headers = copy_folder_with_http_info(request)
+      request_token if _status_code == 401
+      nil
+    end
+
+    # Copy folder
+    # 
+    # @param request CopyFolderRequest
+    # @return [Array<(nil, Fixnum, Hash)>]
+    # nil, response status code and response headers
+    private def copy_folder_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? CopyFolderRequest
+
+      @api_client.config.logger.debug 'Calling API: AssemblyApi.copy_folder ...' if @api_client.config.debugging
+      # verify the required parameter 'dest_path' is set
+      raise ArgumentError, 'Missing the required parameter dest_path when calling AssemblyApi.copy_folder' if @api_client.config.client_side_validation && request.dest_path.nil?
+      # verify the required parameter 'src_path' is set
+      raise ArgumentError, 'Missing the required parameter src_path when calling AssemblyApi.copy_folder' if @api_client.config.client_side_validation && request.src_path.nil?
+      # resource path
+      local_var_path = '/assembly/storage/folder/copy/{srcPath}'
+      local_var_path = local_var_path.sub('{' + downcase_first_letter('SrcPath') + '}', request.src_path.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[downcase_first_letter('DestPath')] = request.dest_path
+
+      if local_var_path.include? downcase_first_letter('SrcStorageName')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('SrcStorageName') + '}', request.src_storage_name.to_s)
+      else
+        query_params[downcase_first_letter('SrcStorageName')] = request.src_storage_name unless request.src_storage_name.nil?
+      end
+      if local_var_path.include? downcase_first_letter('DestStorageName')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('DestStorageName') + '}', request.dest_storage_name.to_s)
+      else
+        query_params[downcase_first_letter('DestStorageName')] = request.dest_storage_name unless request.dest_storage_name.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'application/xml'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json', 'application/xml'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        AssemblyApi#copy_folder\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Create the folder
+    # 
+    # @param request CreateFolderRequest
+    # @return [nil]
+    def create_folder(request)
+      data, _status_code, _headers = create_folder_with_http_info(request)
+      request_token if _status_code == 401
+      nil
+    end
+
+    # Create the folder
+    # 
+    # @param request CreateFolderRequest
+    # @return [Array<(nil, Fixnum, Hash)>]
+    # nil, response status code and response headers
+    private def create_folder_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? CreateFolderRequest
+
+      @api_client.config.logger.debug 'Calling API: AssemblyApi.create_folder ...' if @api_client.config.debugging
+      # verify the required parameter 'path' is set
+      raise ArgumentError, 'Missing the required parameter path when calling AssemblyApi.create_folder' if @api_client.config.client_side_validation && request.path.nil?
+      # resource path
+      local_var_path = '/assembly/storage/folder/{path}'
+      local_var_path = local_var_path.sub('{' + downcase_first_letter('Path') + '}', request.path.to_s)
+
+      # query parameters
+      query_params = {}
+      if local_var_path.include? downcase_first_letter('StorageName')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('StorageName') + '}', request.storage_name.to_s)
+      else
+        query_params[downcase_first_letter('StorageName')] = request.storage_name unless request.storage_name.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'application/xml'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json', 'application/xml'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        AssemblyApi#create_folder\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Delete file
+    # 
+    # @param request DeleteFileRequest
+    # @return [nil]
+    def delete_file(request)
+      data, _status_code, _headers = delete_file_with_http_info(request)
+      request_token if _status_code == 401
+      nil
+    end
+
+    # Delete file
+    # 
+    # @param request DeleteFileRequest
+    # @return [Array<(nil, Fixnum, Hash)>]
+    # nil, response status code and response headers
+    private def delete_file_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? DeleteFileRequest
+
+      @api_client.config.logger.debug 'Calling API: AssemblyApi.delete_file ...' if @api_client.config.debugging
+      # verify the required parameter 'path' is set
+      raise ArgumentError, 'Missing the required parameter path when calling AssemblyApi.delete_file' if @api_client.config.client_side_validation && request.path.nil?
+      # resource path
+      local_var_path = '/assembly/storage/file/{path}'
+      local_var_path = local_var_path.sub('{' + downcase_first_letter('Path') + '}', request.path.to_s)
+
+      # query parameters
+      query_params = {}
+      if local_var_path.include? downcase_first_letter('StorageName')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('StorageName') + '}', request.storage_name.to_s)
+      else
+        query_params[downcase_first_letter('StorageName')] = request.storage_name unless request.storage_name.nil?
+      end
+      if local_var_path.include? downcase_first_letter('VersionId')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('VersionId') + '}', request.version_id.to_s)
+      else
+        query_params[downcase_first_letter('VersionId')] = request.version_id unless request.version_id.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'application/xml'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json', 'application/xml'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        AssemblyApi#delete_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Delete folder
+    # 
+    # @param request DeleteFolderRequest
+    # @return [nil]
+    def delete_folder(request)
+      data, _status_code, _headers = delete_folder_with_http_info(request)
+      request_token if _status_code == 401
+      nil
+    end
+
+    # Delete folder
+    # 
+    # @param request DeleteFolderRequest
+    # @return [Array<(nil, Fixnum, Hash)>]
+    # nil, response status code and response headers
+    private def delete_folder_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? DeleteFolderRequest
+
+      @api_client.config.logger.debug 'Calling API: AssemblyApi.delete_folder ...' if @api_client.config.debugging
+      # verify the required parameter 'path' is set
+      raise ArgumentError, 'Missing the required parameter path when calling AssemblyApi.delete_folder' if @api_client.config.client_side_validation && request.path.nil?
+      # resource path
+      local_var_path = '/assembly/storage/folder/{path}'
+      local_var_path = local_var_path.sub('{' + downcase_first_letter('Path') + '}', request.path.to_s)
+
+      # query parameters
+      query_params = {}
+      if local_var_path.include? downcase_first_letter('StorageName')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('StorageName') + '}', request.storage_name.to_s)
+      else
+        query_params[downcase_first_letter('StorageName')] = request.storage_name unless request.storage_name.nil?
+      end
+      if local_var_path.include? downcase_first_letter('Recursive')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('Recursive') + '}', request.recursive.to_s)
+      else
+        query_params[downcase_first_letter('Recursive')] = request.recursive unless request.recursive.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'application/xml'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json', 'application/xml'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        AssemblyApi#delete_folder\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Download file
+    # 
+    # @param request DownloadFileRequest
+    # @return [File]
+    def download_file(request)
+      data, _status_code, _headers = download_file_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Download file
+    # 
+    # @param request DownloadFileRequest
+    # @return [Array<(File, Fixnum, Hash)>]
+    # File data, response status code and response headers
+    private def download_file_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? DownloadFileRequest
+
+      @api_client.config.logger.debug 'Calling API: AssemblyApi.download_file ...' if @api_client.config.debugging
+      # verify the required parameter 'path' is set
+      raise ArgumentError, 'Missing the required parameter path when calling AssemblyApi.download_file' if @api_client.config.client_side_validation && request.path.nil?
+      # resource path
+      local_var_path = '/assembly/storage/file/{path}'
+      local_var_path = local_var_path.sub('{' + downcase_first_letter('Path') + '}', request.path.to_s)
+
+      # query parameters
+      query_params = {}
+      if local_var_path.include? downcase_first_letter('StorageName')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('StorageName') + '}', request.storage_name.to_s)
+      else
+        query_params[downcase_first_letter('StorageName')] = request.storage_name unless request.storage_name.nil?
+      end
+      if local_var_path.include? downcase_first_letter('VersionId')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('VersionId') + '}', request.version_id.to_s)
+      else
+        query_params[downcase_first_letter('VersionId')] = request.version_id unless request.version_id.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'application/xml'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json', 'application/xml'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        AssemblyApi#download_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Get all files and folders within a folder
+    # 
+    # @param request GetFilesListRequest
+    # @return [FilesList]
+    def get_files_list(request)
+      data, _status_code, _headers = get_files_list_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Get all files and folders within a folder
+    # 
+    # @param request GetFilesListRequest
+    # @return [Array<(FilesList, Fixnum, Hash)>]
+    # FilesList data, response status code and response headers
+    private def get_files_list_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? GetFilesListRequest
+
+      @api_client.config.logger.debug 'Calling API: AssemblyApi.get_files_list ...' if @api_client.config.debugging
+      # verify the required parameter 'path' is set
+      raise ArgumentError, 'Missing the required parameter path when calling AssemblyApi.get_files_list' if @api_client.config.client_side_validation && request.path.nil?
+      # resource path
+      local_var_path = '/assembly/storage/folder/{path}'
+      local_var_path = local_var_path.sub('{' + downcase_first_letter('Path') + '}', request.path.to_s)
+
+      # query parameters
+      query_params = {}
+      if local_var_path.include? downcase_first_letter('StorageName')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('StorageName') + '}', request.storage_name.to_s)
+      else
+        query_params[downcase_first_letter('StorageName')] = request.storage_name unless request.storage_name.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'application/xml'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json', 'application/xml'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'FilesList')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        AssemblyApi#get_files_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Retrieves list of supported file formats.
+    # 
+    # @param request GetSupportedFileFormatsRequest
+    # @return [FormatCollection]
+    def get_supported_file_formats(request)
+      data, _status_code, _headers = get_supported_file_formats_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Retrieves list of supported file formats.
+    # 
+    # @param request GetSupportedFileFormatsRequest
+    # @return [Array<(FormatCollection, Fixnum, Hash)>]
+    # FormatCollection data, response status code and response headers
+    private def get_supported_file_formats_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? GetSupportedFileFormatsRequest
+
+      @api_client.config.logger.debug 'Calling API: AssemblyApi.get_supported_file_formats ...' if @api_client.config.debugging
+      # resource path
+      local_var_path = '/assembly/formats'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'application/xml'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json', 'application/xml'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'FormatCollection')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        AssemblyApi#get_supported_file_formats\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Move file
+    # 
+    # @param request MoveFileRequest
+    # @return [nil]
+    def move_file(request)
+      data, _status_code, _headers = move_file_with_http_info(request)
+      request_token if _status_code == 401
+      nil
+    end
+
+    # Move file
+    # 
+    # @param request MoveFileRequest
+    # @return [Array<(nil, Fixnum, Hash)>]
+    # nil, response status code and response headers
+    private def move_file_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? MoveFileRequest
+
+      @api_client.config.logger.debug 'Calling API: AssemblyApi.move_file ...' if @api_client.config.debugging
+      # verify the required parameter 'dest_path' is set
+      raise ArgumentError, 'Missing the required parameter dest_path when calling AssemblyApi.move_file' if @api_client.config.client_side_validation && request.dest_path.nil?
+      # verify the required parameter 'src_path' is set
+      raise ArgumentError, 'Missing the required parameter src_path when calling AssemblyApi.move_file' if @api_client.config.client_side_validation && request.src_path.nil?
+      # resource path
+      local_var_path = '/assembly/storage/file/move/{srcPath}'
+      local_var_path = local_var_path.sub('{' + downcase_first_letter('SrcPath') + '}', request.src_path.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[downcase_first_letter('DestPath')] = request.dest_path
+
+      if local_var_path.include? downcase_first_letter('SrcStorageName')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('SrcStorageName') + '}', request.src_storage_name.to_s)
+      else
+        query_params[downcase_first_letter('SrcStorageName')] = request.src_storage_name unless request.src_storage_name.nil?
+      end
+      if local_var_path.include? downcase_first_letter('DestStorageName')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('DestStorageName') + '}', request.dest_storage_name.to_s)
+      else
+        query_params[downcase_first_letter('DestStorageName')] = request.dest_storage_name unless request.dest_storage_name.nil?
+      end
+      if local_var_path.include? downcase_first_letter('VersionId')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('VersionId') + '}', request.version_id.to_s)
+      else
+        query_params[downcase_first_letter('VersionId')] = request.version_id unless request.version_id.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'application/xml'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json', 'application/xml'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        AssemblyApi#move_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Move folder
+    # 
+    # @param request MoveFolderRequest
+    # @return [nil]
+    def move_folder(request)
+      data, _status_code, _headers = move_folder_with_http_info(request)
+      request_token if _status_code == 401
+      nil
+    end
+
+    # Move folder
+    # 
+    # @param request MoveFolderRequest
+    # @return [Array<(nil, Fixnum, Hash)>]
+    # nil, response status code and response headers
+    private def move_folder_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? MoveFolderRequest
+
+      @api_client.config.logger.debug 'Calling API: AssemblyApi.move_folder ...' if @api_client.config.debugging
+      # verify the required parameter 'dest_path' is set
+      raise ArgumentError, 'Missing the required parameter dest_path when calling AssemblyApi.move_folder' if @api_client.config.client_side_validation && request.dest_path.nil?
+      # verify the required parameter 'src_path' is set
+      raise ArgumentError, 'Missing the required parameter src_path when calling AssemblyApi.move_folder' if @api_client.config.client_side_validation && request.src_path.nil?
+      # resource path
+      local_var_path = '/assembly/storage/folder/move/{srcPath}'
+      local_var_path = local_var_path.sub('{' + downcase_first_letter('SrcPath') + '}', request.src_path.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[downcase_first_letter('DestPath')] = request.dest_path
+
+      if local_var_path.include? downcase_first_letter('SrcStorageName')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('SrcStorageName') + '}', request.src_storage_name.to_s)
+      else
+        query_params[downcase_first_letter('SrcStorageName')] = request.src_storage_name unless request.src_storage_name.nil?
+      end
+      if local_var_path.include? downcase_first_letter('DestStorageName')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('DestStorageName') + '}', request.dest_storage_name.to_s)
+      else
+        query_params[downcase_first_letter('DestStorageName')] = request.dest_storage_name unless request.dest_storage_name.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'application/xml'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json', 'application/xml'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        AssemblyApi#move_folder\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
     # Builds a document using document template and XML or JSON data passed in request
     # 
     # @param request PostAssembleDocumentRequest
@@ -59,10 +705,8 @@ module GroupDocsAssemblyCloud
       @api_client.config.logger.debug 'Calling API: AssemblyApi.post_assemble_document ...' if @api_client.config.debugging
       # verify the required parameter 'name' is set
       raise ArgumentError, 'Missing the required parameter name when calling AssemblyApi.post_assemble_document' if @api_client.config.client_side_validation && request.name.nil?
-      # verify the required parameter 'data' is set
-      raise ArgumentError, 'Missing the required parameter data when calling AssemblyApi.post_assemble_document' if @api_client.config.client_side_validation && request.data.nil?
-      # verify the required parameter 'save_options' is set
-      raise ArgumentError, 'Missing the required parameter save_options when calling AssemblyApi.post_assemble_document' if @api_client.config.client_side_validation && request.save_options.nil?
+      # verify the required parameter 'report_data' is set
+      raise ArgumentError, 'Missing the required parameter report_data when calling AssemblyApi.post_assemble_document' if @api_client.config.client_side_validation && request.report_data.nil?
       # resource path
       local_var_path = '/assembly/{name}/build'
       local_var_path = local_var_path.sub('{' + downcase_first_letter('Name') + '}', request.name.to_s)
@@ -83,27 +727,87 @@ module GroupDocsAssemblyCloud
       # header parameters
       header_params = {}
       # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/octet-stream'])
+      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'application/xml'])
       # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json', 'application/xml'])
 
       # form parameters
       form_params = {}
-      form_params[downcase_first_letter('SaveOptions')] = JSON.generate(request.save_options) unless request.save_options.nil?
-      form_params[downcase_first_letter('Data')] = request.data
 
       # http body (model)
-      auth_names = ['oauth']
+      post_body = @api_client.object_to_http_body(request.report_data)
+      auth_names = ['JWT']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
                                                         form_params: form_params,
-                                                        body: nil,
+                                                        body: post_body,
                                                         auth_names: auth_names,
                                                         return_type: 'File')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called:
         AssemblyApi#post_assemble_document\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
+    # Upload file
+    # 
+    # @param request UploadFileRequest
+    # @return [FilesUploadResult]
+    def upload_file(request)
+      data, _status_code, _headers = upload_file_with_http_info(request)
+      request_token if _status_code == 401
+      data
+    end
+
+    # Upload file
+    # 
+    # @param request UploadFileRequest
+    # @return [Array<(FilesUploadResult, Fixnum, Hash)>]
+    # FilesUploadResult data, response status code and response headers
+    private def upload_file_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? UploadFileRequest
+
+      @api_client.config.logger.debug 'Calling API: AssemblyApi.upload_file ...' if @api_client.config.debugging
+      # verify the required parameter 'file' is set
+      raise ArgumentError, 'Missing the required parameter file when calling AssemblyApi.upload_file' if @api_client.config.client_side_validation && request.file.nil?
+      # verify the required parameter 'path' is set
+      raise ArgumentError, 'Missing the required parameter path when calling AssemblyApi.upload_file' if @api_client.config.client_side_validation && request.path.nil?
+      # resource path
+      local_var_path = '/assembly/storage/file/{path}'
+      local_var_path = local_var_path.sub('{' + downcase_first_letter('Path') + '}', request.path.to_s)
+
+      # query parameters
+      query_params = {}
+      if local_var_path.include? downcase_first_letter('StorageName')
+        local_var_path = local_var_path.sub('{' + downcase_first_letter('StorageName') + '}', request.storage_name.to_s)
+      else
+        query_params[downcase_first_letter('StorageName')] = request.storage_name unless request.storage_name.nil?
+      end
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = 'multipart/form-data'
+
+      # form parameters
+      form_params = {}
+      form_params[downcase_first_letter('File')] = request.file
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'FilesUploadResult')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        AssemblyApi#upload_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       [data, status_code, headers]
     end

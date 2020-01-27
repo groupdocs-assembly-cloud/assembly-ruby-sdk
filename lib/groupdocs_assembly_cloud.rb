@@ -30,8 +30,15 @@ require_relative 'groupdocs_assembly_cloud/version'
 require_relative 'groupdocs_assembly_cloud/configuration'
 
 # Models
+require_relative 'groupdocs_assembly_cloud/models/error'
+require_relative 'groupdocs_assembly_cloud/models/error_details'
 require_relative 'groupdocs_assembly_cloud/models/file_response'
-require_relative 'groupdocs_assembly_cloud/models/load_save_options_data'
+require_relative 'groupdocs_assembly_cloud/models/files_list'
+require_relative 'groupdocs_assembly_cloud/models/files_upload_result'
+require_relative 'groupdocs_assembly_cloud/models/format'
+require_relative 'groupdocs_assembly_cloud/models/format_collection'
+require_relative 'groupdocs_assembly_cloud/models/report_options_data'
+require_relative 'groupdocs_assembly_cloud/models/storage_file'
 
 # APIs
 require_relative 'groupdocs_assembly_cloud/api/assembly_api'
