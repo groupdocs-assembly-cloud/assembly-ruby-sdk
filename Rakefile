@@ -1,6 +1,6 @@
 require "bundler/gem_tasks"
 require "rake/testtask"
-require 'ci/reporter/rake/minitest'
+require "ci/reporter/rake/minitest"
 ENV['CI_REPORTS'] = 'testReports/report'
 
 Rake::TestTask.new do |t|

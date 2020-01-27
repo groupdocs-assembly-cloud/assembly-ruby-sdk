@@ -1,6 +1,6 @@
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="GroupDocs" file="PostAssembleDocumentRequest.rb">
+ # <copyright company="GroupDocs" file="MoveFileRequest.rb">
  #   Copyright (c) 2019 GroupDocs.Assembly for Cloud
  # </copyright>
  # <summary>
@@ -28,30 +28,34 @@
 module GroupDocsAssemblyCloud
 
   #
-  # Request model for post_assemble_document operation.
+  # Request model for move_file operation.
   #
-  class PostAssembleDocumentRequest
+  class MoveFileRequest
 
-        # File name of template, which is located on a storage
-        attr_accessor :name
-        # Report Data Options. It should be JSON with SaveFormat and ReportData
-        attr_accessor :report_data
-        # Folder path where template file is located(on a storage)
-        attr_accessor :folder
-        # Result name of built document
-        attr_accessor :dest_file_name
+        # Destination file path e.g. '/dest.ext'
+        attr_accessor :dest_path
+        # Source file's path e.g. '/Folder 1/file.ext' or '/Bucket/Folder 1/file.ext'
+        attr_accessor :src_path
+        # Source storage name
+        attr_accessor :src_storage_name
+        # Destination storage name
+        attr_accessor :dest_storage_name
+        # File version ID to move
+        attr_accessor :version_id
 	
         #
         # Initializes a new instance.
-        # @param name File name of template, which is located on a storage
-        # @param report_data Report Data Options. It should be JSON with SaveFormat and ReportData
-        # @param folder Folder path where template file is located(on a storage)
-        # @param dest_file_name Result name of built document
-        def initialize(name, report_data, folder = nil, dest_file_name = nil)
-           self.name = name
-           self.report_data = report_data
-           self.folder = folder
-           self.dest_file_name = dest_file_name
+        # @param dest_path Destination file path e.g. '/dest.ext'
+        # @param src_path Source file's path e.g. '/Folder 1/file.ext' or '/Bucket/Folder 1/file.ext'
+        # @param src_storage_name Source storage name
+        # @param dest_storage_name Destination storage name
+        # @param version_id File version ID to move
+        def initialize(dest_path, src_path, src_storage_name = nil, dest_storage_name = nil, version_id = nil)
+           self.dest_path = dest_path
+           self.src_path = src_path
+           self.src_storage_name = src_storage_name
+           self.dest_storage_name = dest_storage_name
+           self.version_id = version_id
         end
   end
 end

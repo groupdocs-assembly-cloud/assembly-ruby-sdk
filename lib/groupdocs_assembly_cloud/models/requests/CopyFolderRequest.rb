@@ -1,6 +1,6 @@
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="GroupDocs" file="PostAssembleDocumentRequest.rb">
+ # <copyright company="GroupDocs" file="CopyFolderRequest.rb">
  #   Copyright (c) 2019 GroupDocs.Assembly for Cloud
  # </copyright>
  # <summary>
@@ -28,30 +28,30 @@
 module GroupDocsAssemblyCloud
 
   #
-  # Request model for post_assemble_document operation.
+  # Request model for copy_folder operation.
   #
-  class PostAssembleDocumentRequest
+  class CopyFolderRequest
 
-        # File name of template, which is located on a storage
-        attr_accessor :name
-        # Report Data Options. It should be JSON with SaveFormat and ReportData
-        attr_accessor :report_data
-        # Folder path where template file is located(on a storage)
-        attr_accessor :folder
-        # Result name of built document
-        attr_accessor :dest_file_name
+        # Destination folder path e.g. '/dst'
+        attr_accessor :dest_path
+        # Source folder path e.g. /Folder1
+        attr_accessor :src_path
+        # Source storage name
+        attr_accessor :src_storage_name
+        # Destination storage name
+        attr_accessor :dest_storage_name
 	
         #
         # Initializes a new instance.
-        # @param name File name of template, which is located on a storage
-        # @param report_data Report Data Options. It should be JSON with SaveFormat and ReportData
-        # @param folder Folder path where template file is located(on a storage)
-        # @param dest_file_name Result name of built document
-        def initialize(name, report_data, folder = nil, dest_file_name = nil)
-           self.name = name
-           self.report_data = report_data
-           self.folder = folder
-           self.dest_file_name = dest_file_name
+        # @param dest_path Destination folder path e.g. '/dst'
+        # @param src_path Source folder path e.g. /Folder1
+        # @param src_storage_name Source storage name
+        # @param dest_storage_name Destination storage name
+        def initialize(dest_path, src_path, src_storage_name = nil, dest_storage_name = nil)
+           self.dest_path = dest_path
+           self.src_path = src_path
+           self.src_storage_name = src_storage_name
+           self.dest_storage_name = dest_storage_name
         end
   end
 end
