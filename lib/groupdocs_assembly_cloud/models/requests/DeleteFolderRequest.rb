@@ -1,6 +1,6 @@
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="GroupDocs" file="FolderGetFilesListRequest.rb">
+ # <copyright company="GroupDocs" file="DeleteFolderRequest.rb">
  #   Copyright (c) 2019 GroupDocs.Assembly for Cloud
  # </copyright>
  # <summary>
@@ -28,22 +28,26 @@
 module GroupDocsAssemblyCloud
 
   #
-  # Request model for folder_get_files_list operation.
+  # Request model for delete_folder operation.
   #
-  class FolderGetFilesListRequest
+  class DeleteFolderRequest
 
-        # Folder path e.g. /Folder1
+        # Folder path e.g. /Folder1s
         attr_accessor :path
         # Storage name
         attr_accessor :storage_name
+        # Enable to delete folders, subfolders and files
+        attr_accessor :recursive
 	
         #
         # Initializes a new instance.
-        # @param path Folder path e.g. /Folder1
+        # @param path Folder path e.g. /Folder1s
         # @param storage_name Storage name
-        def initialize(path, storage_name = nil)
+        # @param recursive Enable to delete folders, subfolders and files
+        def initialize(path, storage_name = nil, recursive = nil)
            self.path = path
            self.storage_name = storage_name
+           self.recursive = recursive
         end
   end
 end

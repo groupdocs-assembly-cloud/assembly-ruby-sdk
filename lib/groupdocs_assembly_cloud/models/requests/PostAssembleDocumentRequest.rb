@@ -34,10 +34,8 @@ module GroupDocsAssemblyCloud
 
         # File name of template, which is located on a storage
         attr_accessor :name
-        # Report data in JSON or XML format
-        attr_accessor :data
-        # Save options in json format
-        attr_accessor :save_options
+        # Report Data Options. It should be JSON with SaveFormat and ReportData
+        attr_accessor :report_data
         # Folder path where template file is located(on a storage)
         attr_accessor :folder
         # Result name of built document
@@ -46,14 +44,12 @@ module GroupDocsAssemblyCloud
         #
         # Initializes a new instance.
         # @param name File name of template, which is located on a storage
-        # @param data Report data in JSON or XML format
-        # @param save_options Save options in json format
+        # @param report_data Report Data Options. It should be JSON with SaveFormat and ReportData
         # @param folder Folder path where template file is located(on a storage)
         # @param dest_file_name Result name of built document
-        def initialize(name, data, save_options, folder = nil, dest_file_name = nil)
+        def initialize(name, report_data, folder = nil, dest_file_name = nil)
            self.name = name
-           self.data = data
-           self.save_options = save_options
+           self.report_data = report_data
            self.folder = folder
            self.dest_file_name = dest_file_name
         end

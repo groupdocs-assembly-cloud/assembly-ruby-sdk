@@ -1,6 +1,6 @@
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="GroupDocs" file="FileDownloadFileRequest.rb">
+ # <copyright company="GroupDocs" file="UploadFileRequest.rb">
  #   Copyright (c) 2019 GroupDocs.Assembly for Cloud
  # </copyright>
  # <summary>
@@ -28,26 +28,26 @@
 module GroupDocsAssemblyCloud
 
   #
-  # Request model for file_download_file operation.
+  # Request model for upload_file operation.
   #
-  class FileDownloadFileRequest
+  class UploadFileRequest
 
-        # Path of the file including the file name and extension e.g. /folder1/file.ext
+        # File to upload
+        attr_accessor :file
+        # Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext              If the content is multipart and path does not contains the file name it tries to get them from filename parameter              from Content-Disposition header.
         attr_accessor :path
         # Storage name
         attr_accessor :storage_name
-        # File version ID to download
-        attr_accessor :version_id
 	
         #
         # Initializes a new instance.
-        # @param path Path of the file including the file name and extension e.g. /folder1/file.ext
+        # @param file File to upload
+        # @param path Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext              If the content is multipart and path does not contains the file name it tries to get them from filename parameter              from Content-Disposition header.
         # @param storage_name Storage name
-        # @param version_id File version ID to download
-        def initialize(path, storage_name = nil, version_id = nil)
+        def initialize(file, path, storage_name = nil)
+           self.file = file
            self.path = path
            self.storage_name = storage_name
-           self.version_id = version_id
         end
   end
 end

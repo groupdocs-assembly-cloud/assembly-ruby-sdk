@@ -1,6 +1,6 @@
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="GroupDocs" file="FileUploadFileRequest.rb">
+ # <copyright company="GroupDocs" file="DeleteFileRequest.rb">
  #   Copyright (c) 2019 GroupDocs.Assembly for Cloud
  # </copyright>
  # <summary>
@@ -28,26 +28,26 @@
 module GroupDocsAssemblyCloud
 
   #
-  # Request model for file_upload_file operation.
+  # Request model for delete_file operation.
   #
-  class FileUploadFileRequest
+  class DeleteFileRequest
 
-        # File to upload
-        attr_accessor :file_data
-        # Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext              If the content is multipart and path does not contains the file name it tries to get them from filename parameter              from Content-Disposition header.
+        # Path of the file including file name and extension e.g. /Folder1/file.ext
         attr_accessor :path
         # Storage name
         attr_accessor :storage_name
+        # File version ID to delete
+        attr_accessor :version_id
 	
         #
         # Initializes a new instance.
-        # @param file_data File to upload
-        # @param path Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext              If the content is multipart and path does not contains the file name it tries to get them from filename parameter              from Content-Disposition header.
+        # @param path Path of the file including file name and extension e.g. /Folder1/file.ext
         # @param storage_name Storage name
-        def initialize(file_data, path, storage_name = nil)
-           self.file_data = file_data
+        # @param version_id File version ID to delete
+        def initialize(path, storage_name = nil, version_id = nil)
            self.path = path
            self.storage_name = storage_name
+           self.version_id = version_id
         end
   end
 end

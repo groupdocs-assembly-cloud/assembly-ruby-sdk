@@ -1,6 +1,6 @@
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="GroupDocs" file="FileCopyFileRequest.rb">
+ # <copyright company="GroupDocs" file="MoveFolderRequest.rb">
  #   Copyright (c) 2019 GroupDocs.Assembly for Cloud
  # </copyright>
  # <summary>
@@ -28,34 +28,30 @@
 module GroupDocsAssemblyCloud
 
   #
-  # Request model for file_copy_file operation.
+  # Request model for move_folder operation.
   #
-  class FileCopyFileRequest
+  class MoveFolderRequest
 
-        # Destination file path
+        # Destination folder path to move to e.g '/dst'
         attr_accessor :dest_path
-        # Source file's path e.g. '/Folder 1/file.ext' or '/Bucket/Folder 1/file.ext'
+        # Source folder path e.g. /Folder1
         attr_accessor :src_path
         # Source storage name
         attr_accessor :src_storage_name
         # Destination storage name
         attr_accessor :dest_storage_name
-        # File version ID to copy
-        attr_accessor :version_id
 	
         #
         # Initializes a new instance.
-        # @param dest_path Destination file path
-        # @param src_path Source file's path e.g. '/Folder 1/file.ext' or '/Bucket/Folder 1/file.ext'
+        # @param dest_path Destination folder path to move to e.g '/dst'
+        # @param src_path Source folder path e.g. /Folder1
         # @param src_storage_name Source storage name
         # @param dest_storage_name Destination storage name
-        # @param version_id File version ID to copy
-        def initialize(dest_path, src_path, src_storage_name = nil, dest_storage_name = nil, version_id = nil)
+        def initialize(dest_path, src_path, src_storage_name = nil, dest_storage_name = nil)
            self.dest_path = dest_path
            self.src_path = src_path
            self.src_storage_name = src_storage_name
            self.dest_storage_name = dest_storage_name
-           self.version_id = version_id
         end
   end
 end

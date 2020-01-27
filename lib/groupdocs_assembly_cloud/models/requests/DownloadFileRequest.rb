@@ -1,6 +1,6 @@
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="GroupDocs" file="FileMoveFileRequest.rb">
+ # <copyright company="GroupDocs" file="DownloadFileRequest.rb">
  #   Copyright (c) 2019 GroupDocs.Assembly for Cloud
  # </copyright>
  # <summary>
@@ -28,33 +28,25 @@
 module GroupDocsAssemblyCloud
 
   #
-  # Request model for file_move_file operation.
+  # Request model for download_file operation.
   #
-  class FileMoveFileRequest
+  class DownloadFileRequest
 
-        # Destination file path e.g. '/dest.ext'
-        attr_accessor :dest_path
-        # Source file's path e.g. '/Folder 1/file.ext' or '/Bucket/Folder 1/file.ext'
-        attr_accessor :src_path
-        # Source storage name
-        attr_accessor :src_storage_name
-        # Destination storage name
-        attr_accessor :dest_storage_name
-        # File version ID to move
+        # Path of the file including the file name and extension e.g. /folder1/file.ext
+        attr_accessor :path
+        # Storage name
+        attr_accessor :storage_name
+        # File version ID to download
         attr_accessor :version_id
 	
         #
         # Initializes a new instance.
-        # @param dest_path Destination file path e.g. '/dest.ext'
-        # @param src_path Source file's path e.g. '/Folder 1/file.ext' or '/Bucket/Folder 1/file.ext'
-        # @param src_storage_name Source storage name
-        # @param dest_storage_name Destination storage name
-        # @param version_id File version ID to move
-        def initialize(dest_path, src_path, src_storage_name = nil, dest_storage_name = nil, version_id = nil)
-           self.dest_path = dest_path
-           self.src_path = src_path
-           self.src_storage_name = src_storage_name
-           self.dest_storage_name = dest_storage_name
+        # @param path Path of the file including the file name and extension e.g. /folder1/file.ext
+        # @param storage_name Storage name
+        # @param version_id File version ID to download
+        def initialize(path, storage_name = nil, version_id = nil)
+           self.path = path
+           self.storage_name = storage_name
            self.version_id = version_id
         end
   end

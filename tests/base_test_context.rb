@@ -49,15 +49,11 @@ module GroupDocsAssemblyCloud
     end
 
     def remote_test_folder
-      'Temp/SdkTests/ruby/'
+      'Temp/SdkTests/TestData/'
     end
 
     def remote_test_out
-      'Temp/SdkTests/ruby/TestOut/'
-    end
-
-    def local_common_folder
-      'TestData/Common/'
+      'Temp/SdkTests/TestData/TestOut/'
     end
   end
 end

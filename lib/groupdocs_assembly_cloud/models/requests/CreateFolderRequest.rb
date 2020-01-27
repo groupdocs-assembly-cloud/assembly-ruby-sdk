@@ -1,6 +1,6 @@
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="GroupDocs" file="FolderMoveFolderRequest.rb">
+ # <copyright company="GroupDocs" file="CreateFolderRequest.rb">
  #   Copyright (c) 2019 GroupDocs.Assembly for Cloud
  # </copyright>
  # <summary>
@@ -28,30 +28,22 @@
 module GroupDocsAssemblyCloud
 
   #
-  # Request model for folder_move_folder operation.
+  # Request model for create_folder operation.
   #
-  class FolderMoveFolderRequest
+  class CreateFolderRequest
 
-        # Destination folder path to move to e.g '/dst'
-        attr_accessor :dest_path
-        # Source folder path e.g. /Folder1
-        attr_accessor :src_path
-        # Source storage name
-        attr_accessor :src_storage_name
-        # Destination storage name
-        attr_accessor :dest_storage_name
+        # Target folder's path e.g. Folder1/Folder2/. The folders will be created recursively
+        attr_accessor :path
+        # Storage name
+        attr_accessor :storage_name
 	
         #
         # Initializes a new instance.
-        # @param dest_path Destination folder path to move to e.g '/dst'
-        # @param src_path Source folder path e.g. /Folder1
-        # @param src_storage_name Source storage name
-        # @param dest_storage_name Destination storage name
-        def initialize(dest_path, src_path, src_storage_name = nil, dest_storage_name = nil)
-           self.dest_path = dest_path
-           self.src_path = src_path
-           self.src_storage_name = src_storage_name
-           self.dest_storage_name = dest_storage_name
+        # @param path Target folder's path e.g. Folder1/Folder2/. The folders will be created recursively
+        # @param storage_name Storage name
+        def initialize(path, storage_name = nil)
+           self.path = path
+           self.storage_name = storage_name
         end
   end
 end

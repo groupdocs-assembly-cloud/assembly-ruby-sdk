@@ -1,6 +1,6 @@
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="GroupDocs" file="FolderDeleteFolderRequest.rb">
+ # <copyright company="GroupDocs" file="MoveFileRequest.rb">
  #   Copyright (c) 2019 GroupDocs.Assembly for Cloud
  # </copyright>
  # <summary>
@@ -28,26 +28,34 @@
 module GroupDocsAssemblyCloud
 
   #
-  # Request model for folder_delete_folder operation.
+  # Request model for move_file operation.
   #
-  class FolderDeleteFolderRequest
+  class MoveFileRequest
 
-        # Folder path e.g. /Folder1s
-        attr_accessor :path
-        # Storage name
-        attr_accessor :storage_name
-        # Enable to delete folders, subfolders and files
-        attr_accessor :recursive
+        # Destination file path e.g. '/dest.ext'
+        attr_accessor :dest_path
+        # Source file's path e.g. '/Folder 1/file.ext' or '/Bucket/Folder 1/file.ext'
+        attr_accessor :src_path
+        # Source storage name
+        attr_accessor :src_storage_name
+        # Destination storage name
+        attr_accessor :dest_storage_name
+        # File version ID to move
+        attr_accessor :version_id
 	
         #
         # Initializes a new instance.
-        # @param path Folder path e.g. /Folder1s
-        # @param storage_name Storage name
-        # @param recursive Enable to delete folders, subfolders and files
-        def initialize(path, storage_name = nil, recursive = nil)
-           self.path = path
-           self.storage_name = storage_name
-           self.recursive = recursive
+        # @param dest_path Destination file path e.g. '/dest.ext'
+        # @param src_path Source file's path e.g. '/Folder 1/file.ext' or '/Bucket/Folder 1/file.ext'
+        # @param src_storage_name Source storage name
+        # @param dest_storage_name Destination storage name
+        # @param version_id File version ID to move
+        def initialize(dest_path, src_path, src_storage_name = nil, dest_storage_name = nil, version_id = nil)
+           self.dest_path = dest_path
+           self.src_path = src_path
+           self.src_storage_name = src_storage_name
+           self.dest_storage_name = dest_storage_name
+           self.version_id = version_id
         end
   end
 end

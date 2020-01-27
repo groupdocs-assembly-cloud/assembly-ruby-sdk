@@ -1,6 +1,6 @@
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="GroupDocs" file="FolderCreateFolderRequest.rb">
+ # <copyright company="GroupDocs" file="CopyFolderRequest.rb">
  #   Copyright (c) 2019 GroupDocs.Assembly for Cloud
  # </copyright>
  # <summary>
@@ -28,22 +28,30 @@
 module GroupDocsAssemblyCloud
 
   #
-  # Request model for folder_create_folder operation.
+  # Request model for copy_folder operation.
   #
-  class FolderCreateFolderRequest
+  class CopyFolderRequest
 
-        # Target folder's path e.g. Folder1/Folder2/. The folders will be created recursively
-        attr_accessor :path
-        # Storage name
-        attr_accessor :storage_name
+        # Destination folder path e.g. '/dst'
+        attr_accessor :dest_path
+        # Source folder path e.g. /Folder1
+        attr_accessor :src_path
+        # Source storage name
+        attr_accessor :src_storage_name
+        # Destination storage name
+        attr_accessor :dest_storage_name
 	
         #
         # Initializes a new instance.
-        # @param path Target folder's path e.g. Folder1/Folder2/. The folders will be created recursively
-        # @param storage_name Storage name
-        def initialize(path, storage_name = nil)
-           self.path = path
-           self.storage_name = storage_name
+        # @param dest_path Destination folder path e.g. '/dst'
+        # @param src_path Source folder path e.g. /Folder1
+        # @param src_storage_name Source storage name
+        # @param dest_storage_name Destination storage name
+        def initialize(dest_path, src_path, src_storage_name = nil, dest_storage_name = nil)
+           self.dest_path = dest_path
+           self.src_path = src_path
+           self.src_storage_name = src_storage_name
+           self.dest_storage_name = dest_storage_name
         end
   end
 end
