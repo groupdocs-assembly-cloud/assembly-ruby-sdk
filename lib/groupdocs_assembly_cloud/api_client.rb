@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------------
-# <copyright company="GroupDocs" file="api_client.rb">
-#   Copyright (c) 2019 GroupDocs.Assembly for Cloud
+# <copyright company="Aspose" file="api_client.rb">
+#   Copyright (c) 2020 GroupDocs.Assembly for Cloud
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -125,17 +125,15 @@ module GroupDocsAssemblyCloud
         end
       end
 
-      conn = Faraday.new url, { :params => query_params, :headers => header_params, :ssl => {:verify => false} } do |f|
+      conn = Faraday.new url, { :params => query_params, :headers => header_params } do |f|
       f.request :multipart
       f.request :url_encoded
-      f.adapter :net_http
+      f.adapter Faraday.default_adapter
       end
 
       case http_method
       when :post
-        return conn.post url do |c| 
-          c.body = req_opts[:body]
-        end
+        return conn.post url, req_opts[:body]
       when :put
         return conn.put url, req_opts[:body]
       when :get
@@ -278,7 +276,9 @@ module GroupDocsAssemblyCloud
     def build_request_url(path)
       # Add leading and trailing slashes to path
       path = "/#{path}".gsub(/\/+/, '/')
-      URI.encode(@config.base_url + path)
+      url = URI.encode(@config.base_url + path)
+      url = url.gsub(/v[0-9.]+\//, '') if url.include? 'connect/token'
+      url
     end
 
     # Builds the HTTP request body

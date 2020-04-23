@@ -1,9 +1,6 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    aspose_storage_cloud (18.6)
-      faraday (~> 0.14.0)
-      mimemagic (~> 0.3.2)
     ast (2.4.0)
     builder (3.2.3)
     ci_reporter (2.0.0)
@@ -17,7 +14,7 @@ GEM
     mimemagic (0.3.3)
     minitest (5.11.3)
     multipart-post (2.0.0)
-    parallel (1.14.0)
+    parallel (1.13.0)
     parser (2.6.0.0)
       ast (~> 2.4.0)
     powerpack (0.1.2)
@@ -37,10 +34,9 @@ GEM
     unicode-display_width (1.4.1)
 
 PLATFORMS
-  ruby
+  x64-mingw32
 
 DEPENDENCIES
-  aspose_storage_cloud (~> 18.6, >= 18.5)
   ci_reporter_minitest
   faraday (~> 0.14.0)
   mimemagic (~> 0.3.2)

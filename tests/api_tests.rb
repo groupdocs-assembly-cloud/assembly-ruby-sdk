@@ -35,14 +35,15 @@ module GroupDocsAssemblyCloud
       end
   
       def test_post_assemble
-        filename = 'TestAllChartTypes.docx'
-        remote_name = filename
+        filename = "TableFeatures.odt"
+        remote_name = remote_test_folder + filename
   
-        st_request = PutCreateRequest.new remote_test_folder + test_folder + '/' + remote_name, File.open(local_test_folder + '/' + filename, "rb").read       
-        @storage_api.put_create st_request
+        self.upload_file(local_test_folder + filename, remote_name)
   
-        request = PostAssembleDocumentRequest.new remote_name ,File.new(local_test_folder + '/Teams.json'),{:SaveFormat => "docx"}, remote_test_folder + test_folder, nil
-        result = @assembly_api.post_assemble_document request
+        template_file_info = TemplateFileInfo.new(:FilePath => remote_name)
+        assemble_data = AssembleOptions.new(:TemplateFileInfo => template_file_info, :SaveFormat => "docx", :ReportData => File.open(local_test_folder + 'TableData.json', 'rb') { |f| f.read })
+        request = AssembleDocumentRequest.new assemble_data
+        result = @assembly_api.assemble_document request
         assert result.length > 0, 'Error occurred while getting image data'
       end
   
