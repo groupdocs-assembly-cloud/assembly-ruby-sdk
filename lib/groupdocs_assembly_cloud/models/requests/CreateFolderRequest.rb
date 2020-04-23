@@ -1,7 +1,7 @@
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="GroupDocs" file="CreateFolderRequest.rb">
- #   Copyright (c) 2019 GroupDocs.Assembly for Cloud
+ # <copyright company="Aspose" file="CreateFolderRequest.rb">
+ #   Copyright (c) 2020 GroupDocs.Assembly for Cloud
  # </copyright>
  # <summary>
  #   Permission is hereby granted, free of charge, to any person obtaining a copy

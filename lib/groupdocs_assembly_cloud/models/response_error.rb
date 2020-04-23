@@ -4,7 +4,7 @@ require 'date'
 module GroupDocsAssemblyCloud
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="GroupDocs" file="Format.rb">
+ # <copyright company="GroupDocs" file="ResponseError.rb">
  #   Copyright (c) 2019 GroupDocs.Assembly for Cloud
  # </copyright>
  # <summary>
@@ -29,28 +29,43 @@ module GroupDocsAssemblyCloud
  # --------------------------------------------------------------------------------------------------------------------
  #
 
-  # Format description.
-  class Format
-    # Gets or sets file format.
-    attr_accessor :file_format
+  # Error class.             
+  class ResponseError
+    # Gets or sets api error code.
+    attr_accessor :code
 
-    # Gets or sets file extension.
-    attr_accessor :extension
+    # Gets or sets error message.
+    attr_accessor :message
+
+    # Gets or sets error description.
+    attr_accessor :description
+
+    # Gets or sets server datetime.
+    attr_accessor :date_time
+
+    # Gets or sets inner error.
+    attr_accessor :inner_response_error
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'file_format' => :'FileFormat',
-        :'extension' => :'Extension'
+        :'code' => :'Code',
+        :'message' => :'Message',
+        :'description' => :'Description',
+        :'date_time' => :'DateTime',
+        :'inner_response_error' => :'InnerResponseError'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'file_format' => :'String',
-        :'extension' => :'String'
+        :'code' => :'String',
+        :'message' => :'String',
+        :'description' => :'String',
+        :'date_time' => :'DateTime',
+        :'inner_response_error' => :'ResponseError'
       }
     end
 
@@ -62,12 +77,24 @@ module GroupDocsAssemblyCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.key?(:'FileFormat')
-        self.file_format = attributes[:'FileFormat']
+      if attributes.key?(:'Code')
+        self.code = attributes[:'Code']
       end
 
-      if attributes.key?(:'Extension')
-        self.extension = attributes[:'Extension']
+      if attributes.key?(:'Message')
+        self.message = attributes[:'Message']
+      end
+
+      if attributes.key?(:'Description')
+        self.description = attributes[:'Description']
+      end
+
+      if attributes.key?(:'DateTime')
+        self.date_time = attributes[:'DateTime']
+      end
+
+      if attributes.key?(:'InnerResponseError')
+        self.inner_response_error = attributes[:'InnerResponseError']
       end
 
     end
@@ -90,8 +117,11 @@ module GroupDocsAssemblyCloud
     def ==(other)
       return true if self.equal?(other)
       self.class == other.class &&
-          file_format == other.file_format &&
-          extension == other.extension
+          code == other.code &&
+          message == other.message &&
+          description == other.description &&
+          date_time == other.date_time &&
+          inner_response_error == other.inner_response_error
     end
 
     # @see the `==` method
@@ -103,7 +133,7 @@ module GroupDocsAssemblyCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [file_format, extension].hash
+      [code, message, description, date_time, inner_response_error].hash
     end
 
     # Builds the object from hash

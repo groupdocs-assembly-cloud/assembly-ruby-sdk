@@ -4,7 +4,7 @@ require 'date'
 module GroupDocsAssemblyCloud
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="GroupDocs" file="Format.rb">
+ # <copyright company="GroupDocs" file="AssembleOptions.rb">
  #   Copyright (c) 2019 GroupDocs.Assembly for Cloud
  # </copyright>
  # <summary>
@@ -29,28 +29,38 @@ module GroupDocsAssemblyCloud
  # --------------------------------------------------------------------------------------------------------------------
  #
 
-  # Format description.
-  class Format
-    # Gets or sets file format.
-    attr_accessor :file_format
+  # Assemble options data which is using for specifying assemble options, like template name, save format, report data and etc.
+  class AssembleOptions
+    # Gets or sets the template name which is located on storage.
+    attr_accessor :template_file_info
 
-    # Gets or sets file extension.
-    attr_accessor :extension
+    # Gets or sets a save format for assembled document.
+    attr_accessor :save_format
+
+    # Gets or sets a data for report.
+    attr_accessor :report_data
+
+    # Gets or sets result path of a built document.
+    attr_accessor :output_path
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'file_format' => :'FileFormat',
-        :'extension' => :'Extension'
+        :'template_file_info' => :'TemplateFileInfo',
+        :'save_format' => :'SaveFormat',
+        :'report_data' => :'ReportData',
+        :'output_path' => :'OutputPath'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'file_format' => :'String',
-        :'extension' => :'String'
+        :'template_file_info' => :'TemplateFileInfo',
+        :'save_format' => :'String',
+        :'report_data' => :'String',
+        :'output_path' => :'String'
       }
     end
 
@@ -62,12 +72,20 @@ module GroupDocsAssemblyCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.key?(:'FileFormat')
-        self.file_format = attributes[:'FileFormat']
+      if attributes.key?(:'TemplateFileInfo')
+        self.template_file_info = attributes[:'TemplateFileInfo']
       end
 
-      if attributes.key?(:'Extension')
-        self.extension = attributes[:'Extension']
+      if attributes.key?(:'SaveFormat')
+        self.save_format = attributes[:'SaveFormat']
+      end
+
+      if attributes.key?(:'ReportData')
+        self.report_data = attributes[:'ReportData']
+      end
+
+      if attributes.key?(:'OutputPath')
+        self.output_path = attributes[:'OutputPath']
       end
 
     end
@@ -90,8 +108,10 @@ module GroupDocsAssemblyCloud
     def ==(other)
       return true if self.equal?(other)
       self.class == other.class &&
-          file_format == other.file_format &&
-          extension == other.extension
+          template_file_info == other.template_file_info &&
+          save_format == other.save_format &&
+          report_data == other.report_data &&
+          output_path == other.output_path
     end
 
     # @see the `==` method
@@ -103,7 +123,7 @@ module GroupDocsAssemblyCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [file_format, extension].hash
+      [template_file_info, save_format, report_data, output_path].hash
     end
 
     # Builds the object from hash

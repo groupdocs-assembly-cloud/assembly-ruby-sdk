@@ -1,7 +1,12 @@
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="GroupDocs" file="UploadFileRequest.rb">
+<<<<<<< HEAD:lib/groupdocs_assembly_cloud/models/requests/PostAssembleDocumentRequest.rb
+ # <copyright company="GroupDocs" file="PostAssembleDocumentRequest.rb">
  #   Copyright (c) 2019 GroupDocs.Assembly for Cloud
+=======
+ # <copyright company="Aspose" file="UploadFileRequest.rb">
+ #   Copyright (c) 2020 GroupDocs.Assembly for Cloud
+>>>>>>> branch:lib/groupdocs_assembly_cloud/models/requests/UploadFileRequest.rb
  # </copyright>
  # <summary>
  #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -28,6 +33,32 @@
 module GroupDocsAssemblyCloud
 
   #
+<<<<<<< HEAD:lib/groupdocs_assembly_cloud/models/requests/PostAssembleDocumentRequest.rb
+  # Request model for post_assemble_document operation.
+  #
+  class PostAssembleDocumentRequest
+
+        # File name of template, which is located on a storage
+        attr_accessor :name
+        # Report Data Options. It should be JSON with SaveFormat and ReportData
+        attr_accessor :report_data
+        # Folder path where template file is located(on a storage)
+        attr_accessor :folder
+        # Result name of built document
+        attr_accessor :dest_file_name
+	
+        #
+        # Initializes a new instance.
+        # @param name File name of template, which is located on a storage
+        # @param report_data Report Data Options. It should be JSON with SaveFormat and ReportData
+        # @param folder Folder path where template file is located(on a storage)
+        # @param dest_file_name Result name of built document
+        def initialize(name, report_data, folder = nil, dest_file_name = nil)
+           self.name = name
+           self.report_data = report_data
+           self.folder = folder
+           self.dest_file_name = dest_file_name
+=======
   # Request model for upload_file operation.
   #
   class UploadFileRequest
@@ -48,6 +79,7 @@ module GroupDocsAssemblyCloud
            self.file = file
            self.path = path
            self.storage_name = storage_name
+>>>>>>> branch:lib/groupdocs_assembly_cloud/models/requests/UploadFileRequest.rb
         end
   end
 end

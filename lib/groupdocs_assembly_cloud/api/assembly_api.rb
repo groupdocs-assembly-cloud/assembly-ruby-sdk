@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------------
-# <copyright company="GroupDocs" file="assembly_api.rb">
-#   Copyright (c) 2019 GroupDocs.Assembly for Cloud
+# <copyright company="Aspose" file="assembly_api.rb">
+#   Copyright (c) 2020 GroupDocs.Assembly for Cloud
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -38,13 +38,96 @@ module GroupDocsAssemblyCloud
       request_token
     end
 
+    # Builds a document using document template and XML or JSON data passed in request.
+    # 
+    # @param request AssembleDocumentRequest
+    # @return [File]
+    def assemble_document(request)
+      begin
+        data, _status_code, _headers = assemble_document_with_http_info(request)
+        rescue ApiError => e
+          if e.code == 401
+            request_token
+            data, _status_code, _headers = assemble_document_with_http_info(request)
+          else
+            raise
+          end
+      end
+      data
+    end
+
+    # Builds a document using document template and XML or JSON data passed in request.
+    # 
+    # @param request AssembleDocumentRequest
+    # @return [Array<(File, Fixnum, Hash)>]
+    # File data, response status code and response headers
+    private def assemble_document_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? AssembleDocumentRequest
+
+      @api_client.config.logger.debug 'Calling API: AssemblyApi.assemble_document ...' if @api_client.config.debugging
+      # verify the required parameter 'assemble_options' is set
+      raise ArgumentError, 'Missing the required parameter assemble_options when calling AssemblyApi.assemble_document' if @api_client.config.client_side_validation && request.assemble_options.nil?
+      # resource path
+      local_var_path = '/assembly/assemble'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'application/xml'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json', 'application/xml'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(request.assemble_options)
+      auth_names = ['JWT']
+      begin
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'File')
+      rescue ApiError => e
+        if e.code == 401
+          request_token
+          data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'File')
+        end														
+      end
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        AssemblyApi#assemble_document\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
     # Copy file
     # 
     # @param request CopyFileRequest
     # @return [nil]
     def copy_file(request)
-      data, _status_code, _headers = copy_file_with_http_info(request)
-      request_token if _status_code == 401
+      begin
+        data, _status_code, _headers = copy_file_with_http_info(request)
+        rescue ApiError => e
+          if e.code == 401
+            request_token
+            data, _status_code, _headers = copy_file_with_http_info(request)
+          else
+            raise
+          end
+      end
       nil
     end
 
@@ -98,12 +181,24 @@ module GroupDocsAssemblyCloud
       # http body (model)
       post_body = nil
       auth_names = ['JWT']
+      begin
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
                                                         form_params: form_params,
                                                         body: post_body,
                                                         auth_names: auth_names)
+      rescue ApiError => e
+        if e.code == 401
+          request_token
+          data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names)
+        end														
+      end
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called:
         AssemblyApi#copy_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
@@ -116,8 +211,16 @@ module GroupDocsAssemblyCloud
     # @param request CopyFolderRequest
     # @return [nil]
     def copy_folder(request)
-      data, _status_code, _headers = copy_folder_with_http_info(request)
-      request_token if _status_code == 401
+      begin
+        data, _status_code, _headers = copy_folder_with_http_info(request)
+        rescue ApiError => e
+          if e.code == 401
+            request_token
+            data, _status_code, _headers = copy_folder_with_http_info(request)
+          else
+            raise
+          end
+      end
       nil
     end
 
@@ -166,12 +269,24 @@ module GroupDocsAssemblyCloud
       # http body (model)
       post_body = nil
       auth_names = ['JWT']
+      begin
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
                                                         form_params: form_params,
                                                         body: post_body,
                                                         auth_names: auth_names)
+      rescue ApiError => e
+        if e.code == 401
+          request_token
+          data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names)
+        end														
+      end
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called:
         AssemblyApi#copy_folder\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
@@ -184,8 +299,16 @@ module GroupDocsAssemblyCloud
     # @param request CreateFolderRequest
     # @return [nil]
     def create_folder(request)
-      data, _status_code, _headers = create_folder_with_http_info(request)
-      request_token if _status_code == 401
+      begin
+        data, _status_code, _headers = create_folder_with_http_info(request)
+        rescue ApiError => e
+          if e.code == 401
+            request_token
+            data, _status_code, _headers = create_folder_with_http_info(request)
+          else
+            raise
+          end
+      end
       nil
     end
 
@@ -225,12 +348,24 @@ module GroupDocsAssemblyCloud
       # http body (model)
       post_body = nil
       auth_names = ['JWT']
+      begin
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
                                                         form_params: form_params,
                                                         body: post_body,
                                                         auth_names: auth_names)
+      rescue ApiError => e
+        if e.code == 401
+          request_token
+          data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names)
+        end														
+      end
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called:
         AssemblyApi#create_folder\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
@@ -243,8 +378,16 @@ module GroupDocsAssemblyCloud
     # @param request DeleteFileRequest
     # @return [nil]
     def delete_file(request)
-      data, _status_code, _headers = delete_file_with_http_info(request)
-      request_token if _status_code == 401
+      begin
+        data, _status_code, _headers = delete_file_with_http_info(request)
+        rescue ApiError => e
+          if e.code == 401
+            request_token
+            data, _status_code, _headers = delete_file_with_http_info(request)
+          else
+            raise
+          end
+      end
       nil
     end
 
@@ -289,12 +432,24 @@ module GroupDocsAssemblyCloud
       # http body (model)
       post_body = nil
       auth_names = ['JWT']
+      begin
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
                                                         form_params: form_params,
                                                         body: post_body,
                                                         auth_names: auth_names)
+      rescue ApiError => e
+        if e.code == 401
+          request_token
+          data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names)
+        end														
+      end
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called:
         AssemblyApi#delete_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
@@ -307,8 +462,16 @@ module GroupDocsAssemblyCloud
     # @param request DeleteFolderRequest
     # @return [nil]
     def delete_folder(request)
-      data, _status_code, _headers = delete_folder_with_http_info(request)
-      request_token if _status_code == 401
+      begin
+        data, _status_code, _headers = delete_folder_with_http_info(request)
+        rescue ApiError => e
+          if e.code == 401
+            request_token
+            data, _status_code, _headers = delete_folder_with_http_info(request)
+          else
+            raise
+          end
+      end
       nil
     end
 
@@ -353,12 +516,24 @@ module GroupDocsAssemblyCloud
       # http body (model)
       post_body = nil
       auth_names = ['JWT']
+      begin
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
                                                         form_params: form_params,
                                                         body: post_body,
                                                         auth_names: auth_names)
+      rescue ApiError => e
+        if e.code == 401
+          request_token
+          data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names)
+        end														
+      end
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called:
         AssemblyApi#delete_folder\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
@@ -371,8 +546,16 @@ module GroupDocsAssemblyCloud
     # @param request DownloadFileRequest
     # @return [File]
     def download_file(request)
-      data, _status_code, _headers = download_file_with_http_info(request)
-      request_token if _status_code == 401
+      begin
+        data, _status_code, _headers = download_file_with_http_info(request)
+        rescue ApiError => e
+          if e.code == 401
+            request_token
+            data, _status_code, _headers = download_file_with_http_info(request)
+          else
+            raise
+          end
+      end
       data
     end
 
@@ -417,6 +600,7 @@ module GroupDocsAssemblyCloud
       # http body (model)
       post_body = nil
       auth_names = ['JWT']
+      begin
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -424,6 +608,18 @@ module GroupDocsAssemblyCloud
                                                         body: post_body,
                                                         auth_names: auth_names,
                                                         return_type: 'File')
+      rescue ApiError => e
+        if e.code == 401
+          request_token
+          data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'File')
+        end														
+      end
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called:
         AssemblyApi#download_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
@@ -436,8 +632,16 @@ module GroupDocsAssemblyCloud
     # @param request GetFilesListRequest
     # @return [FilesList]
     def get_files_list(request)
-      data, _status_code, _headers = get_files_list_with_http_info(request)
-      request_token if _status_code == 401
+      begin
+        data, _status_code, _headers = get_files_list_with_http_info(request)
+        rescue ApiError => e
+          if e.code == 401
+            request_token
+            data, _status_code, _headers = get_files_list_with_http_info(request)
+          else
+            raise
+          end
+      end
       data
     end
 
@@ -477,6 +681,7 @@ module GroupDocsAssemblyCloud
       # http body (model)
       post_body = nil
       auth_names = ['JWT']
+      begin
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -484,6 +689,18 @@ module GroupDocsAssemblyCloud
                                                         body: post_body,
                                                         auth_names: auth_names,
                                                         return_type: 'FilesList')
+      rescue ApiError => e
+        if e.code == 401
+          request_token
+          data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'FilesList')
+        end														
+      end
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called:
         AssemblyApi#get_files_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
@@ -494,18 +711,26 @@ module GroupDocsAssemblyCloud
     # Retrieves list of supported file formats.
     # 
     # @param request GetSupportedFileFormatsRequest
-    # @return [FormatCollection]
+    # @return [FileFormatsResponse]
     def get_supported_file_formats(request)
-      data, _status_code, _headers = get_supported_file_formats_with_http_info(request)
-      request_token if _status_code == 401
+      begin
+        data, _status_code, _headers = get_supported_file_formats_with_http_info(request)
+        rescue ApiError => e
+          if e.code == 401
+            request_token
+            data, _status_code, _headers = get_supported_file_formats_with_http_info(request)
+          else
+            raise
+          end
+      end
       data
     end
 
     # Retrieves list of supported file formats.
     # 
     # @param request GetSupportedFileFormatsRequest
-    # @return [Array<(FormatCollection, Fixnum, Hash)>]
-    # FormatCollection data, response status code and response headers
+    # @return [Array<(FileFormatsResponse, Fixnum, Hash)>]
+    # FileFormatsResponse data, response status code and response headers
     private def get_supported_file_formats_with_http_info(request)
       raise ArgumentError, 'Incorrect request type' unless request.is_a? GetSupportedFileFormatsRequest
 
@@ -529,13 +754,26 @@ module GroupDocsAssemblyCloud
       # http body (model)
       post_body = nil
       auth_names = ['JWT']
+      begin
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
                                                         form_params: form_params,
                                                         body: post_body,
                                                         auth_names: auth_names,
-                                                        return_type: 'FormatCollection')
+                                                        return_type: 'FileFormatsResponse')
+      rescue ApiError => e
+        if e.code == 401
+          request_token
+          data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'FileFormatsResponse')
+        end														
+      end
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called:
         AssemblyApi#get_supported_file_formats\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
@@ -548,8 +786,16 @@ module GroupDocsAssemblyCloud
     # @param request MoveFileRequest
     # @return [nil]
     def move_file(request)
-      data, _status_code, _headers = move_file_with_http_info(request)
-      request_token if _status_code == 401
+      begin
+        data, _status_code, _headers = move_file_with_http_info(request)
+        rescue ApiError => e
+          if e.code == 401
+            request_token
+            data, _status_code, _headers = move_file_with_http_info(request)
+          else
+            raise
+          end
+      end
       nil
     end
 
@@ -603,12 +849,24 @@ module GroupDocsAssemblyCloud
       # http body (model)
       post_body = nil
       auth_names = ['JWT']
+      begin
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
                                                         form_params: form_params,
                                                         body: post_body,
                                                         auth_names: auth_names)
+      rescue ApiError => e
+        if e.code == 401
+          request_token
+          data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names)
+        end														
+      end
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called:
         AssemblyApi#move_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
@@ -621,8 +879,16 @@ module GroupDocsAssemblyCloud
     # @param request MoveFolderRequest
     # @return [nil]
     def move_folder(request)
-      data, _status_code, _headers = move_folder_with_http_info(request)
-      request_token if _status_code == 401
+      begin
+        data, _status_code, _headers = move_folder_with_http_info(request)
+        rescue ApiError => e
+          if e.code == 401
+            request_token
+            data, _status_code, _headers = move_folder_with_http_info(request)
+          else
+            raise
+          end
+      end
       nil
     end
 
@@ -671,82 +937,27 @@ module GroupDocsAssemblyCloud
       # http body (model)
       post_body = nil
       auth_names = ['JWT']
+      begin
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
                                                         form_params: form_params,
                                                         body: post_body,
                                                         auth_names: auth_names)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called:
-        AssemblyApi#move_folder\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      [data, status_code, headers]
-    end
-
-    # Builds a document using document template and XML or JSON data passed in request
-    # 
-    # @param request PostAssembleDocumentRequest
-    # @return [File]
-    def post_assemble_document(request)
-      data, _status_code, _headers = post_assemble_document_with_http_info(request)
-      request_token if _status_code == 401
-      data
-    end
-
-    # Builds a document using document template and XML or JSON data passed in request
-    # 
-    # @param request PostAssembleDocumentRequest
-    # @return [Array<(File, Fixnum, Hash)>]
-    # File data, response status code and response headers
-    private def post_assemble_document_with_http_info(request)
-      raise ArgumentError, 'Incorrect request type' unless request.is_a? PostAssembleDocumentRequest
-
-      @api_client.config.logger.debug 'Calling API: AssemblyApi.post_assemble_document ...' if @api_client.config.debugging
-      # verify the required parameter 'name' is set
-      raise ArgumentError, 'Missing the required parameter name when calling AssemblyApi.post_assemble_document' if @api_client.config.client_side_validation && request.name.nil?
-      # verify the required parameter 'report_data' is set
-      raise ArgumentError, 'Missing the required parameter report_data when calling AssemblyApi.post_assemble_document' if @api_client.config.client_side_validation && request.report_data.nil?
-      # resource path
-      local_var_path = '/assembly/{name}/build'
-      local_var_path = local_var_path.sub('{' + downcase_first_letter('Name') + '}', request.name.to_s)
-
-      # query parameters
-      query_params = {}
-      if local_var_path.include? downcase_first_letter('Folder')
-        local_var_path = local_var_path.sub('{' + downcase_first_letter('Folder') + '}', request.folder.to_s)
-      else
-        query_params[downcase_first_letter('Folder')] = request.folder unless request.folder.nil?
-      end
-      if local_var_path.include? downcase_first_letter('DestFileName')
-        local_var_path = local_var_path.sub('{' + downcase_first_letter('DestFileName') + '}', request.dest_file_name.to_s)
-      else
-        query_params[downcase_first_letter('DestFileName')] = request.dest_file_name unless request.dest_file_name.nil?
-      end
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'application/xml'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json', 'application/xml'])
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = @api_client.object_to_http_body(request.report_data)
-      auth_names = ['JWT']
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+      rescue ApiError => e
+        if e.code == 401
+          request_token
+          data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
                                                         form_params: form_params,
                                                         body: post_body,
-                                                        auth_names: auth_names,
-                                                        return_type: 'File')
+                                                        auth_names: auth_names)
+        end														
+      end
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called:
-        AssemblyApi#post_assemble_document\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        AssemblyApi#move_folder\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       [data, status_code, headers]
     end
@@ -756,8 +967,16 @@ module GroupDocsAssemblyCloud
     # @param request UploadFileRequest
     # @return [FilesUploadResult]
     def upload_file(request)
-      data, _status_code, _headers = upload_file_with_http_info(request)
-      request_token if _status_code == 401
+      begin
+        data, _status_code, _headers = upload_file_with_http_info(request)
+        rescue ApiError => e
+          if e.code == 401
+            request_token
+            data, _status_code, _headers = upload_file_with_http_info(request)
+          else
+            raise
+          end
+      end
       data
     end
 
@@ -798,6 +1017,7 @@ module GroupDocsAssemblyCloud
       # http body (model)
       post_body = nil
       auth_names = ['JWT']
+      begin
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
                                                         header_params: header_params,
                                                         query_params: query_params,
@@ -805,6 +1025,18 @@ module GroupDocsAssemblyCloud
                                                         body: post_body,
                                                         auth_names: auth_names,
                                                         return_type: 'FilesUploadResult')
+      rescue ApiError => e
+        if e.code == 401
+          request_token
+          data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        auth_names: auth_names,
+                                                        return_type: 'FilesUploadResult')
+        end														
+      end
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called:
         AssemblyApi#upload_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"

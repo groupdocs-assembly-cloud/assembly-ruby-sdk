@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------------------------
-# <copyright company="GroupDocs" file="groupdocs_assembly_cloud.rb">
-#   Copyright (c) 2019 GroupDocs.Assembly for Cloud
+# <copyright company="Aspose" file="groupdocs_assembly_cloud.rb">
+#   Copyright (c) 2020 GroupDocs.Assembly for Cloud
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -30,6 +30,8 @@ require_relative 'groupdocs_assembly_cloud/version'
 require_relative 'groupdocs_assembly_cloud/configuration'
 
 # Models
+require_relative 'groupdocs_assembly_cloud/models/assemble_options'
+require_relative 'groupdocs_assembly_cloud/models/assembly_response'
 require_relative 'groupdocs_assembly_cloud/models/error'
 require_relative 'groupdocs_assembly_cloud/models/error_details'
 require_relative 'groupdocs_assembly_cloud/models/file_response'
@@ -37,8 +39,11 @@ require_relative 'groupdocs_assembly_cloud/models/files_list'
 require_relative 'groupdocs_assembly_cloud/models/files_upload_result'
 require_relative 'groupdocs_assembly_cloud/models/format'
 require_relative 'groupdocs_assembly_cloud/models/format_collection'
-require_relative 'groupdocs_assembly_cloud/models/report_options_data'
+require_relative 'groupdocs_assembly_cloud/models/response_error'
 require_relative 'groupdocs_assembly_cloud/models/storage_file'
+require_relative 'groupdocs_assembly_cloud/models/template_file_info'
+require_relative 'groupdocs_assembly_cloud/models/assembly_api_error_response'
+require_relative 'groupdocs_assembly_cloud/models/file_formats_response'
 
 # APIs
 require_relative 'groupdocs_assembly_cloud/api/assembly_api'

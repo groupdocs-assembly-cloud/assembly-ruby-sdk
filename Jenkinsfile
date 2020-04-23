@@ -1,6 +1,6 @@
 parameters {
         string(name: 'branch', defaultValue: 'master', description: 'branch to test')		
-		string(name: 'testServerUrl', defaultValue: 'https://api-qa.groupdocs.cloud', description: 'server url')		
+		string(name: 'testServerUrl', defaultValue: 'https://api-qa.aspose.cloud', description: 'server url')		
 }
 
 def runtests(dockerImageVersion)
@@ -17,11 +17,8 @@ def runtests(dockerImageVersion)
             
             docker.image('ruby:' + dockerImageVersion).inside('-u root'){
                 stage('build'){
-                    sh "export DEBIAN_FRONTEND=noninteractive"
-                    sh "apt-get -yq update"
-                    sh "apt -yq install zip unzip"
-                    sh "mkdir testReports"
-                    sh "gem install bundler && bundle install"
+						sh "mkdir testReports"
+						sh "gem install bundler -v 2.0.2 && bundle install"
                 }
             
                 stage('tests'){   
@@ -47,11 +44,19 @@ def runtests(dockerImageVersion)
 }
 
 node('words-linux') {        
-    stage('ruby'){
+    stage('oldruby'){
 		try {
-			runtests("latest")
+			runtests("2.4")
 		} finally {
 			cleanWs()
 		}
 	}
+	
+	stage('newruby'){
+		try {
+			runtests("2.5") 
+		} finally {
+			cleanWs()
+		}
+ 	}
 }

@@ -4,7 +4,7 @@ require 'date'
 module GroupDocsAssemblyCloud
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="GroupDocs" file="Format.rb">
+ # <copyright company="GroupDocs" file="AssemblyApiErrorResponse.rb">
  #   Copyright (c) 2019 GroupDocs.Assembly for Cloud
  # </copyright>
  # <summary>
@@ -29,28 +29,28 @@ module GroupDocsAssemblyCloud
  # --------------------------------------------------------------------------------------------------------------------
  #
 
-  # Format description.
-  class Format
-    # Gets or sets file format.
-    attr_accessor :file_format
+  # Error response for exceptions.             
+  class AssemblyApiErrorResponse
+    # Gets or sets request Id.
+    attr_accessor :request_id
 
-    # Gets or sets file extension.
-    attr_accessor :extension
+    # Gets or sets error.
+    attr_accessor :error
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'file_format' => :'FileFormat',
-        :'extension' => :'Extension'
+        :'request_id' => :'RequestId',
+        :'error' => :'Error'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'file_format' => :'String',
-        :'extension' => :'String'
+        :'request_id' => :'String',
+        :'error' => :'ResponseError'
       }
     end
 
@@ -62,12 +62,12 @@ module GroupDocsAssemblyCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.key?(:'FileFormat')
-        self.file_format = attributes[:'FileFormat']
+      if attributes.key?(:'RequestId')
+        self.request_id = attributes[:'RequestId']
       end
 
-      if attributes.key?(:'Extension')
-        self.extension = attributes[:'Extension']
+      if attributes.key?(:'Error')
+        self.error = attributes[:'Error']
       end
 
     end
@@ -90,8 +90,8 @@ module GroupDocsAssemblyCloud
     def ==(other)
       return true if self.equal?(other)
       self.class == other.class &&
-          file_format == other.file_format &&
-          extension == other.extension
+          request_id == other.request_id &&
+          error == other.error
     end
 
     # @see the `==` method
@@ -103,7 +103,7 @@ module GroupDocsAssemblyCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [file_format, extension].hash
+      [request_id, error].hash
     end
 
     # Builds the object from hash

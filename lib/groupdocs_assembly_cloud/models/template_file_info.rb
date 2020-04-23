@@ -4,7 +4,7 @@ require 'date'
 module GroupDocsAssemblyCloud
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="GroupDocs" file="Format.rb">
+ # <copyright company="GroupDocs" file="TemplateFileInfo.rb">
  #   Copyright (c) 2019 GroupDocs.Assembly for Cloud
  # </copyright>
  # <summary>
@@ -29,28 +29,38 @@ module GroupDocsAssemblyCloud
  # --------------------------------------------------------------------------------------------------------------------
  #
 
-  # Format description.
-  class Format
-    # Gets or sets file format.
-    attr_accessor :file_format
+  # TemplateFileInfo dto.             
+  class TemplateFileInfo
+    # Gets or sets path to file.             
+    attr_accessor :file_path
 
-    # Gets or sets file extension.
-    attr_accessor :extension
+    # Gets or sets the name of storage.             
+    attr_accessor :storage_name
+
+    # Gets or sets the name of storage.             
+    attr_accessor :version_id
+
+    # Gets or sets the password.             
+    attr_accessor :password
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'file_format' => :'FileFormat',
-        :'extension' => :'Extension'
+        :'file_path' => :'FilePath',
+        :'storage_name' => :'StorageName',
+        :'version_id' => :'VersionId',
+        :'password' => :'Password'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'file_format' => :'String',
-        :'extension' => :'String'
+        :'file_path' => :'String',
+        :'storage_name' => :'String',
+        :'version_id' => :'String',
+        :'password' => :'String'
       }
     end
 
@@ -62,12 +72,20 @@ module GroupDocsAssemblyCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.key?(:'FileFormat')
-        self.file_format = attributes[:'FileFormat']
+      if attributes.key?(:'FilePath')
+        self.file_path = attributes[:'FilePath']
       end
 
-      if attributes.key?(:'Extension')
-        self.extension = attributes[:'Extension']
+      if attributes.key?(:'StorageName')
+        self.storage_name = attributes[:'StorageName']
+      end
+
+      if attributes.key?(:'VersionId')
+        self.version_id = attributes[:'VersionId']
+      end
+
+      if attributes.key?(:'Password')
+        self.password = attributes[:'Password']
       end
 
     end
@@ -90,8 +108,10 @@ module GroupDocsAssemblyCloud
     def ==(other)
       return true if self.equal?(other)
       self.class == other.class &&
-          file_format == other.file_format &&
-          extension == other.extension
+          file_path == other.file_path &&
+          storage_name == other.storage_name &&
+          version_id == other.version_id &&
+          password == other.password
     end
 
     # @see the `==` method
@@ -103,7 +123,7 @@ module GroupDocsAssemblyCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [file_format, extension].hash
+      [file_path, storage_name, version_id, password].hash
     end
 
     # Builds the object from hash

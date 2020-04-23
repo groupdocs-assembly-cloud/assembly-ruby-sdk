@@ -1,7 +1,7 @@
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="GroupDocs" file="PostAssembleDocumentRequest.rb">
- #   Copyright (c) 2019 GroupDocs.Assembly for Cloud
+ # <copyright company="Aspose" file="AssembleDocumentRequest.rb">
+ #   Copyright (c) 2020 GroupDocs.Assembly for Cloud
  # </copyright>
  # <summary>
  #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -28,30 +28,18 @@
 module GroupDocsAssemblyCloud
 
   #
-  # Request model for post_assemble_document operation.
+  # Request model for assemble_document operation.
   #
-  class PostAssembleDocumentRequest
+  class AssembleDocumentRequest
 
-        # File name of template, which is located on a storage
-        attr_accessor :name
-        # Report Data Options. It should be JSON with SaveFormat and ReportData
-        attr_accessor :report_data
-        # Folder path where template file is located(on a storage)
-        attr_accessor :folder
-        # Result name of built document
-        attr_accessor :dest_file_name
+        # Assemble Options. It should be JSON with TemplateName, SaveFormat, ReportData and etc.             
+        attr_accessor :assemble_options
 	
         #
         # Initializes a new instance.
-        # @param name File name of template, which is located on a storage
-        # @param report_data Report Data Options. It should be JSON with SaveFormat and ReportData
-        # @param folder Folder path where template file is located(on a storage)
-        # @param dest_file_name Result name of built document
-        def initialize(name, report_data, folder = nil, dest_file_name = nil)
-           self.name = name
-           self.report_data = report_data
-           self.folder = folder
-           self.dest_file_name = dest_file_name
+        # @param assemble_options Assemble Options. It should be JSON with TemplateName, SaveFormat, ReportData and etc.             
+        def initialize(assemble_options)
+           self.assemble_options = assemble_options
         end
   end
 end

@@ -32,7 +32,7 @@ module GroupDocsAssemblyCloud
     include MiniTest::Assertions
     def setup
       file = File.read('Settings/servercreds.json')
-      if file.length == 0
+      if file.empty?
         raise ArgumentError, 'Put your credentials into servercreds.json'
       end
       creds = JSON.parse(file)
@@ -44,16 +44,25 @@ module GroupDocsAssemblyCloud
       @assembly_api = AssemblyApi.new
     end
 
+    def upload_file(file_path, remote_path)
+      request = UploadFileRequest.new File.new(file_path, 'rb'), remote_path
+      @assembly_api.upload_file request
+    end
+
     def local_test_folder
       'TestData/'
     end
 
     def remote_test_folder
-      'Temp/SdkTests/TestData/'
+      'Temp/SdkTests/ruby/'
     end
 
     def remote_test_out
-      'Temp/SdkTests/TestData/TestOut/'
+      'Temp/SdkTests/ruby/TestOut/'
+    end
+
+    def local_common_folder
+      'TestData/Common/'
     end
   end
 end

@@ -4,7 +4,7 @@ require 'date'
 module GroupDocsAssemblyCloud
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="GroupDocs" file="ReportOptionsData.rb">
+ # <copyright company="GroupDocs" file="AssemblyResponse.rb">
  #   Copyright (c) 2019 GroupDocs.Assembly for Cloud
  # </copyright>
  # <summary>
@@ -29,28 +29,23 @@ module GroupDocsAssemblyCloud
  # --------------------------------------------------------------------------------------------------------------------
  #
 
-  # Save options data which is using for specifying additional save options, like save format and etc.
-  class ReportOptionsData
-    # Save format for assembled document
-    attr_accessor :save_format
-
-    # Data for report
-    attr_accessor :report_data
+  # Base class for all responses.
+  class AssemblyResponse
+    # Gets or sets request Id.
+    attr_accessor :request_id
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'save_format' => :'SaveFormat',
-        :'report_data' => :'ReportData'
+        :'request_id' => :'RequestId'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'save_format' => :'String',
-        :'report_data' => :'String'
+        :'request_id' => :'String'
       }
     end
 
@@ -62,12 +57,8 @@ module GroupDocsAssemblyCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.key?(:'SaveFormat')
-        self.save_format = attributes[:'SaveFormat']
-      end
-
-      if attributes.key?(:'ReportData')
-        self.report_data = attributes[:'ReportData']
+      if attributes.key?(:'RequestId')
+        self.request_id = attributes[:'RequestId']
       end
 
     end
@@ -90,8 +81,7 @@ module GroupDocsAssemblyCloud
     def ==(other)
       return true if self.equal?(other)
       self.class == other.class &&
-          save_format == other.save_format &&
-          report_data == other.report_data
+          request_id == other.request_id
     end
 
     # @see the `==` method
@@ -103,7 +93,7 @@ module GroupDocsAssemblyCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [save_format, report_data].hash
+      [request_id].hash
     end
 
     # Builds the object from hash

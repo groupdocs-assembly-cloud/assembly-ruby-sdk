@@ -31,7 +31,7 @@ module GroupDocsAssemblyCloud
 
   # Describes object which contains list of supported file formats.
   class FormatCollection
-    # Supported file formats.
+    # Gets or sets supported file formats.
     attr_accessor :formats
 
 

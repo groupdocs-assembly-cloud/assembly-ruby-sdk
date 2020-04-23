@@ -35,22 +35,15 @@ module GroupDocsAssemblyCloud
       end
   
       def test_post_assemble
-        filename = 'TestAllChartTypes.docx'
-        remote_name = filename
+        filename = "TableFeatures.odt"
+        remote_name = remote_test_folder + filename
   
-        st_content = File.open(local_test_folder + '/' + filename, 'rb')
-        st_remotepath = remote_test_folder + test_folder + '/' + remote_name 
-        st_request = UploadFileRequest.new st_content, st_remotepath, nil       
-        st_result = @assembly_api.upload_file st_request       
-        assert st_result.uploaded.length == 1, 'Error occurred while uploading data'
-        assert st_result.errors.length == 0, 'Error occurred while uploading data'
+        self.upload_file(local_test_folder + filename, remote_name)
   
-        save_options_args = {}
-        save_options_args[:'SaveFormat'] = "pdf"
-        save_options_args[:'ReportData'] = File.open(local_test_folder + '/Teams.json', 'r').read
-        save_options = ReportOptionsData.new save_options_args
-        request = PostAssembleDocumentRequest.new remote_name, save_options, remote_test_folder + test_folder, nil
-        result = @assembly_api.post_assemble_document request
+        template_file_info = TemplateFileInfo.new(:FilePath => remote_name)
+        assemble_data = AssembleOptions.new(:TemplateFileInfo => template_file_info, :SaveFormat => "docx", :ReportData => File.open(local_test_folder + 'TableData.json', 'rb') { |f| f.read })
+        request = AssembleDocumentRequest.new assemble_data
+        result = @assembly_api.assemble_document request
         assert result.length > 0, 'Error occurred while getting image data'
       end
   
