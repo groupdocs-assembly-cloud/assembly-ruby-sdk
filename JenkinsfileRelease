@@ -1,7 +1,7 @@
 parameters {
 		string(name: 'version', defaultValue: '19.10.0', description: 'version of gem')
 		string(name: 'deployKey', defaultValue: 'xxx', description: 'key')
-		string(name: 'testServerUrl', defaultValue: 'https://api-qa.aspose.cloud', description: 'server url')
+		string(name: 'testServerUrl', defaultValue: 'https://api-qa.groupdocs.cloud', description: 'server url')
 		string(name: 'StartFromStage', defaultValue: '0', description: '0 based index of stage which will be started')		
 }
 node('words-linux') {         
@@ -38,7 +38,7 @@ def testGemLocally()
 	try {	
         stage('2:checkout again'){
 			checkout([$class: 'GitSCM', branches: [[name: '*/testPackage']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'LocalBranch', localBranch: "**"]], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '361885ba-9425-4230-950e-0af201d90547', url: 'https://git.auckland.dynabic.com/assembly-cloud/assembly-ruby-sdk.git']]])
-			withCredentials([usernamePassword(credentialsId: '6839cbe8-39fa-40c0-86ce-90706f0bae5d', passwordVariable: 'AppKey', usernameVariable: 'AppSid')]) {
+			withCredentials([usernamePassword(credentialsId: '6179b564-811f-48a9-8b85-875076fadbf5', passwordVariable: 'AppKey', usernameVariable: 'AppSid')]) {
 				sh 'mkdir -p Settings'
 				sh 'echo "{\\"AppSid\\": \\"$AppSid\\",\\"AppKey\\": \\"$AppKey\\", \\"BaseUrl\\": \\"${testServerUrl}\\"}" > Settings/servercreds.json'
 			}
@@ -84,7 +84,7 @@ def publishGem()
 					sh "gem build groupdocs_assembly_cloud.gemspec"
 					sh "mkdir ~/.gem"
 					sh "touch ~/.gem/credentials"
-					withCredentials([string(credentialsId: 'bb609755-8dfb-4f45-819a-3dbfc85fc9fd', variable: 'deployKey')]) {
+					withCredentials([string(credentialsId: '81c7971e-73cc-4adc-9b66-7884ec411c9f', variable: 'deployKey')]) {
 						sh "echo ':rubygems_api_key: $deployKey' > ~/.gem/credentials"
 					}
 					sh "chmod 0600 ~/.gem/credentials"
