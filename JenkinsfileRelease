@@ -88,6 +88,7 @@ def publishGem()
 						sh "echo ':rubygems_api_key: $deployKey' > ~/.gem/credentials"
 					}
 					sh "chmod 0600 ~/.gem/credentials"
+					sh "cat ~/.gem/credentials"
 					sh "gem push groupdocs_assembly_cloud-${version}.gem"
 				}
 				
