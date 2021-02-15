@@ -1,7 +1,8 @@
+d
  #
  # --------------------------------------------------------------------------------------------------------------------
  # <copyright company="Aspose" file="CreateFolderRequest.rb">
- #   Copyright (c) 2020 GroupDocs.Assembly for Cloud
+ #   Copyright (c) 2021 GroupDocs.Assembly for Cloud
  # </copyright>
  # <summary>
  #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -46,4 +47,4 @@ module GroupDocsAssemblyCloud
            self.storage_name = storage_name
         end
   end
-end
+en

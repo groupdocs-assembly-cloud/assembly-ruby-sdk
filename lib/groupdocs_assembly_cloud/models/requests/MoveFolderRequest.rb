@@ -1,7 +1,8 @@
+d
  #
  # --------------------------------------------------------------------------------------------------------------------
  # <copyright company="Aspose" file="MoveFolderRequest.rb">
- #   Copyright (c) 2020 GroupDocs.Assembly for Cloud
+ #   Copyright (c) 2021 GroupDocs.Assembly for Cloud
  # </copyright>
  # <summary>
  #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -54,4 +55,4 @@ module GroupDocsAssemblyCloud
            self.dest_storage_name = dest_storage_name
         end
   end
-end
+en

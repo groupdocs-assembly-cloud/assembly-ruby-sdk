@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose" file="assembly_api.rb">
-#   Copyright (c) 2020 GroupDocs.Assembly for Cloud
+#   Copyright (c) 2021 GroupDocs.Assembly for Cloud
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -989,8 +989,8 @@ module GroupDocsAssemblyCloud
       raise ArgumentError, 'Incorrect request type' unless request.is_a? UploadFileRequest
 
       @api_client.config.logger.debug 'Calling API: AssemblyApi.upload_file ...' if @api_client.config.debugging
-      # verify the required parameter 'file' is set
-      raise ArgumentError, 'Missing the required parameter file when calling AssemblyApi.upload_file' if @api_client.config.client_side_validation && request.file.nil?
+      # verify the required parameter 'file_content' is set
+      raise ArgumentError, 'Missing the required parameter file_content when calling AssemblyApi.upload_file' if @api_client.config.client_side_validation && request.file_content.nil?
       # verify the required parameter 'path' is set
       raise ArgumentError, 'Missing the required parameter path when calling AssemblyApi.upload_file' if @api_client.config.client_side_validation && request.path.nil?
       # resource path
@@ -1012,7 +1012,7 @@ module GroupDocsAssemblyCloud
 
       # form parameters
       form_params = {}
-      form_params[downcase_first_letter('File')] = request.file
+      form_params[downcase_first_letter('FileContent')] = request.file_content
 
       # http body (model)
       post_body = nil
@@ -1071,4 +1071,4 @@ module GroupDocsAssemblyCloud
       end
     end
   end
-end
+en

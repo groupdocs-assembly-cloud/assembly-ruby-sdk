@@ -1,7 +1,7 @@
  #
  # --------------------------------------------------------------------------------------------------------------------
  # <copyright company="Aspose" file="version.rb">
- #   Copyright (c) 2020 GroupDocs.Assembly for Cloud
+ #   Copyright (c) 2021 GroupDocs.Assembly for Cloud
  # </copyright>
  # <summary>
  #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,5 +25,5 @@
  # --------------------------------------------------------------------------------------------------------------------
  #
 module GroupDocsAssemblyCloud
-  VERSION = "20.6.0".freeze
+  VERSION = "20.5.0".freeze
 end

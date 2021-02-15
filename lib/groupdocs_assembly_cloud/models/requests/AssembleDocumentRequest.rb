@@ -1,7 +1,8 @@
+d
  #
  # --------------------------------------------------------------------------------------------------------------------
  # <copyright company="Aspose" file="AssembleDocumentRequest.rb">
- #   Copyright (c) 2020 GroupDocs.Assembly for Cloud
+ #   Copyright (c) 2021 GroupDocs.Assembly for Cloud
  # </copyright>
  # <summary>
  #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -32,14 +33,14 @@ module GroupDocsAssemblyCloud
   #
   class AssembleDocumentRequest
 
-        # Assemble Options. It should be JSON with TemplateName, SaveFormat, ReportData and etc.             
+        # Assemble Options. It should be JSON or XML with TemplateFileInfo, SaveFormat, ReportData and etc.             
         attr_accessor :assemble_options
 	
         #
         # Initializes a new instance.
-        # @param assemble_options Assemble Options. It should be JSON with TemplateName, SaveFormat, ReportData and etc.             
+        # @param assemble_options Assemble Options. It should be JSON or XML with TemplateFileInfo, SaveFormat, ReportData and etc.             
         def initialize(assemble_options)
            self.assemble_options = assemble_options
         end
   end
-end
+en

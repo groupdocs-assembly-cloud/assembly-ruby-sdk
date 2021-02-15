@@ -44,7 +44,7 @@ module GroupDocsAssemblyCloud
     attr_accessor :date_time
 
     # Gets or sets inner error.
-    attr_accessor :inner_response_error
+    attr_accessor :inner_error
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -54,7 +54,7 @@ module GroupDocsAssemblyCloud
         :'message' => :'Message',
         :'description' => :'Description',
         :'date_time' => :'DateTime',
-        :'inner_response_error' => :'InnerResponseError'
+        :'inner_error' => :'InnerError'
       }
     end
 
@@ -65,7 +65,7 @@ module GroupDocsAssemblyCloud
         :'message' => :'String',
         :'description' => :'String',
         :'date_time' => :'DateTime',
-        :'inner_response_error' => :'ResponseError'
+        :'inner_error' => :'ResponseError'
       }
     end
 
@@ -93,8 +93,8 @@ module GroupDocsAssemblyCloud
         self.date_time = attributes[:'DateTime']
       end
 
-      if attributes.key?(:'InnerResponseError')
-        self.inner_response_error = attributes[:'InnerResponseError']
+      if attributes.key?(:'InnerError')
+        self.inner_error = attributes[:'InnerError']
       end
 
     end
@@ -121,7 +121,7 @@ module GroupDocsAssemblyCloud
           message == other.message &&
           description == other.description &&
           date_time == other.date_time &&
-          inner_response_error == other.inner_response_error
+          inner_error == other.inner_error
     end
 
     # @see the `==` method
@@ -133,7 +133,7 @@ module GroupDocsAssemblyCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [code, message, description, date_time, inner_response_error].hash
+      [code, message, description, date_time, inner_error].hash
     end
 
     # Builds the object from hash

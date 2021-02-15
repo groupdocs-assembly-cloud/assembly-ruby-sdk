@@ -1,7 +1,8 @@
+d
  #
  # --------------------------------------------------------------------------------------------------------------------
  # <copyright company="Aspose" file="UploadFileRequest.rb">
- #   Copyright (c) 2020 GroupDocs.Assembly for Cloud
+ #   Copyright (c) 2021 GroupDocs.Assembly for Cloud
  # </copyright>
  # <summary>
  #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -33,7 +34,7 @@ module GroupDocsAssemblyCloud
   class UploadFileRequest
 
         # File to upload
-        attr_accessor :file
+        attr_accessor :file_content
         # Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext              If the content is multipart and path does not contains the file name it tries to get them from filename parameter              from Content-Disposition header.
         attr_accessor :path
         # Storage name
@@ -41,11 +42,11 @@ module GroupDocsAssemblyCloud
 	
         #
         # Initializes a new instance.
-        # @param file File to upload
+        # @param file_content File to upload
         # @param path Path where to upload including filename and extension e.g. /file.ext or /Folder 1/file.ext              If the content is multipart and path does not contains the file name it tries to get them from filename parameter              from Content-Disposition header.
         # @param storage_name Storage name
-        def initialize(file, path, storage_name = nil)
-           self.file = file
+        def initialize(file_content, path, storage_name = nil)
+           self.file_content = file_content
            self.path = path
            self.storage_name = storage_name
         end

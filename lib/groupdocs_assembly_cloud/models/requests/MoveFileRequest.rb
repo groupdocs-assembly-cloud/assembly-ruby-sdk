@@ -1,7 +1,8 @@
+d
  #
  # --------------------------------------------------------------------------------------------------------------------
  # <copyright company="Aspose" file="MoveFileRequest.rb">
- #   Copyright (c) 2020 GroupDocs.Assembly for Cloud
+ #   Copyright (c) 2021 GroupDocs.Assembly for Cloud
  # </copyright>
  # <summary>
  #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -58,4 +59,4 @@ module GroupDocsAssemblyCloud
            self.version_id = version_id
         end
   end
-end
+en
