@@ -1,4 +1,3 @@
-d
  #
  # --------------------------------------------------------------------------------------------------------------------
  # <copyright company="Aspose" file="CopyFolderRequest.rb">
@@ -55,4 +54,4 @@ module GroupDocsAssemblyCloud
            self.dest_storage_name = dest_storage_name
         end
   end
-en
+end

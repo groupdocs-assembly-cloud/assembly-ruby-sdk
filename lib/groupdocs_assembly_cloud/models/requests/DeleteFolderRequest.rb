@@ -1,4 +1,3 @@
-d
  #
  # --------------------------------------------------------------------------------------------------------------------
  # <copyright company="Aspose" file="DeleteFolderRequest.rb">
@@ -51,4 +50,4 @@ module GroupDocsAssemblyCloud
            self.recursive = recursive
         end
   end
-en
+end

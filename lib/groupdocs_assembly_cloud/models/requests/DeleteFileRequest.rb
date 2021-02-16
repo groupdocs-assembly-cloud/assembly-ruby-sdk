@@ -1,4 +1,3 @@
-d
  #
  # --------------------------------------------------------------------------------------------------------------------
  # <copyright company="Aspose" file="DeleteFileRequest.rb">
@@ -51,4 +50,4 @@ module GroupDocsAssemblyCloud
            self.version_id = version_id
         end
   end
-en
+end

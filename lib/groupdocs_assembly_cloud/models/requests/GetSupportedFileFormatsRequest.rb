@@ -1,4 +1,3 @@
-d
  #
  # --------------------------------------------------------------------------------------------------------------------
  # <copyright company="Aspose" file="GetSupportedFileFormatsRequest.rb">
@@ -34,4 +33,4 @@ module GroupDocsAssemblyCloud
   class GetSupportedFileFormatsRequest
 
   end
-en
+end

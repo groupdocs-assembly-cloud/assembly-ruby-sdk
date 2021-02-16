@@ -1,4 +1,3 @@
-d
  #
  # --------------------------------------------------------------------------------------------------------------------
  # <copyright company="Aspose" file="CopyFileRequest.rb">
@@ -59,4 +58,4 @@ module GroupDocsAssemblyCloud
            self.version_id = version_id
         end
   end
-en
+end

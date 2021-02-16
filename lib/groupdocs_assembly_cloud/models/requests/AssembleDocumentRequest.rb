@@ -1,4 +1,3 @@
-d
  #
  # --------------------------------------------------------------------------------------------------------------------
  # <copyright company="Aspose" file="AssembleDocumentRequest.rb">
@@ -43,4 +42,4 @@ module GroupDocsAssemblyCloud
            self.assemble_options = assemble_options
         end
   end
-en
+end
