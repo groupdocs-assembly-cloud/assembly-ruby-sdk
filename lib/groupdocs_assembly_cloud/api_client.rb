@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose" file="api_client.rb">
-#   Copyright (c) 2020 GroupDocs.Assembly for Cloud
+#   Copyright (c) 2021 GroupDocs.Assembly for Cloud
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -52,8 +52,8 @@ module GroupDocsAssemblyCloud
       @config = config
       @default_headers = {
         'Content-Type' => "application/json",
-        'x-aspose-client' => "ruby sdk",
-        'x-aspose-version' => GroupDocsAssemblyCloud::VERSION.to_s
+        'x-groupdocs-client' => "ruby sdk",
+        'x-groupdocs-version' => GroupDocsAssemblyCloud::VERSION.to_s
       }
     end
 
